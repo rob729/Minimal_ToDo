@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:id="@+id/ParentLayout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:background="?attr/colorPrimary"
+                        android:id="@+id/editTextParentLinearLayout"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+                    <com.example.robin.roomwordsample.CustomTextInputLayout
+                            app:hintTextAppearance="@style/FloatingLabelTextAppearance"
+                            android:id="@+id/toDoCustomTextInput"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <EditText
+                                android:id="@+id/userToDoEditText"
+                                android:hint="Title"
+                                android:lines="2"
+                                android:inputType="textAutoCorrect|textCapSentences"
+                                android:maxLines="3"
+                                android:textColor="@color/icons"
+                                android:gravity="start|bottom"
+                                android:layout_marginRight="32dp"
+                                android:layout_marginLeft="32dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                    </com.example.robin.roomwordsample.CustomTextInputLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    <ImageView
+                            android:id="@+id/imgal"
+                            android:layout_marginTop="85dp"
+                            android:layout_marginStart="50dp"
+                            android:layout_width="45dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_alarm_add" />
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Remind me"
+                            android:textColor="@android:color/black"
+                            android:layout_marginTop="95dp"
+                            android:textSize="18sp"
+                            android:layout_marginStart="25dp"/>
+                    <Switch
+                            android:id="@+id/HasRemind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="95dp"
+                            android:layout_marginStart="50dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/EnterDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginTop="10dp"
+                        android:visibility="invisible">
+
+                    <EditText
+                            android:id="@+id/EnterDate"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Date"
+                            android:textIsSelectable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:inputType="date"
+                            android:gravity="center"
+                            android:layout_marginStart="40dp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="\@"
+                            android:textSize="20sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"/>
+                    <EditText
+                            android:id="@+id/EnterTime"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Time"
+                            android:textIsSelectable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:inputType="date"
+                            android:gravity="center"
+                            android:layout_marginStart="15dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/makeToDoFloatingActionButton"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_anchor="@id/editTextParentLinearLayout"
+                    app:layout_anchorGravity="bottom|end"
+                    app:fabSize="normal"
+                    android:clickable="true"
+                    android:src="@drawable/ic_send"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
+</layout>
