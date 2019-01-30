@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerview)
-        val wordListAdapter = WordListAdapter(this)
+        val wordListAdapter = WordListAdapter(this, binding.fab)
         recyclerView.adapter = wordListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)

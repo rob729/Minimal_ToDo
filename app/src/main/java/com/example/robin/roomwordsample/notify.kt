@@ -12,7 +12,7 @@ import androidx.core.app.NotificationCompat
 import androidx.work.WorkManager
 import androidx.work.Worker
 
-class notify: Worker() {
+class notify : Worker() {
 
     private val b = "420"
     var task = " "
@@ -25,6 +25,7 @@ class notify: Worker() {
             val notificationChannel = NotificationChannel(b, "Default Channel", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(notificationChannel)
         }
+
         if (appSharedPrefs.contains("Task")) {
             task = appSharedPrefs.getString("Task", " ")
         }
@@ -39,7 +40,6 @@ class notify: Worker() {
             .setContentIntent(pi)
             .build()
         notificationManager.notify(1112, notification)
-        WorkManager.getInstance().cancelAllWork()
         Looper.loop()
         return Worker.Result.SUCCESS
 
