@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample
+package com.example.robin.roomwordsample.Utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,13 +9,15 @@ import android.graphics.Color
 import android.os.Looper
 import android.preference.PreferenceManager
 import androidx.core.app.NotificationCompat
-import androidx.work.WorkManager
 import androidx.work.Worker
+import com.example.robin.roomwordsample.Activity.MainActivity
+import com.example.robin.roomwordsample.R
 
-class notify : Worker() {
+class notify() : Worker() {
 
     private val b = "420"
     var task = " "
+
     override fun doWork(): Result {
         Looper.prepare()
         val appSharedPrefs = PreferenceManager
@@ -30,10 +32,10 @@ class notify : Worker() {
             task = appSharedPrefs.getString("Task", " ")
         }
         val intent = Intent(applicationContext, MainActivity::class.java)
-        val pi = PendingIntent.getActivity(applicationContext,333, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pi = PendingIntent.getActivity(applicationContext, 333, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         val notification = NotificationCompat.Builder(applicationContext, b)
             .setSmallIcon(R.drawable.ic_notification)
-            .setColor(Color.rgb(30,136, 229))
+            .setColor(Color.rgb(30, 136, 229))
             .setContentTitle("Reminder")
             .setContentText(task)
             .setAutoCancel(true)
@@ -41,7 +43,7 @@ class notify : Worker() {
             .build()
         notificationManager.notify(1112, notification)
         Looper.loop()
-        return Worker.Result.SUCCESS
+        return Result.SUCCESS
 
     }
 

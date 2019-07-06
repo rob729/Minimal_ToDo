@@ -33,7 +33,7 @@
                             android:layout_height="wrap_content">
                         <EditText
                                 android:id="@+id/userToDoEditText"
-                                android:hint="Title"
+                                android:hint="@string/task"
                                 android:lines="2"
                                 android:inputType="textAutoCorrect|textCapSentences"
                                 android:maxLines="3"
@@ -49,20 +49,21 @@
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal">
 
                     <ImageView
                             android:id="@+id/imgal"
-                            android:layout_marginTop="85dp"
-                            android:layout_marginStart="50dp"
                             android:layout_width="45dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/ic_alarm_add" />
+                            android:layout_height="40dp"
+                            android:layout_marginTop="84dp"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_alarm_add"/>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Remind me"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/textColor"
                             android:layout_marginTop="95dp"
                             android:textSize="18sp"
                             android:layout_marginStart="25dp"/>
@@ -80,7 +81,8 @@
                         android:layout_height="0dp"
                         android:layout_weight="2"
                         android:layout_marginTop="10dp"
-                        android:visibility="invisible">
+                        android:visibility="invisible"
+                        android:gravity="center_horizontal">
 
                     <EditText
                             android:id="@+id/EnterDate"
@@ -92,7 +94,7 @@
                             android:focusableInTouchMode="false"
                             android:inputType="date"
                             android:gravity="center"
-                            android:layout_marginStart="40dp"/>
+                            android:layout_marginStart="25dp"/>
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -118,14 +120,14 @@
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/makeToDoFloatingActionButton"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_anchor="@id/editTextParentLinearLayout"
                     app:layout_anchorGravity="bottom|end"
                     app:fabSize="normal"
                     android:clickable="true"
-                    android:src="@drawable/ic_send"/>
+                    android:src="@drawable/ic_send"
+                    android:focusable="true"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

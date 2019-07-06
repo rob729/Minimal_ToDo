@@ -7,7 +7,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.android.Main
 import kotlin.coroutines.CoroutineContext
 
-class WordViewModel(application: Application): AndroidViewModel(Application()){
+class WordViewModel(application: Application) : AndroidViewModel(Application()) {
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext

@@ -3,7 +3,7 @@ package com.example.robin.roomwordsample.Data
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
-class WordRepository(private val wordDao: WordDao){
+class WordRepository(private val wordDao: WordDao) {
     val allWords: LiveData<List<Word>> = wordDao.getAllWords()
 
     @WorkerThread

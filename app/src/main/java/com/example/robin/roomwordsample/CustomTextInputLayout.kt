@@ -36,7 +36,7 @@ class CustomTextInputLayout : TextInputLayout {
             // In case that hint is changed programatically
             val currentEditTextHint = editText?.hint
 
-            if (currentEditTextHint != null && currentEditTextHint!!.isNotEmpty()) {
+            if (currentEditTextHint != null && currentEditTextHint.isNotEmpty()) {
                 mHint = currentEditTextHint
             }
             hint = mHint

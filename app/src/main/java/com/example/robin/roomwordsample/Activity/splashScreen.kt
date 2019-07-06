@@ -1,8 +1,8 @@
-package com.example.robin.roomwordsample
+package com.example.robin.roomwordsample.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class splashScreen : AppCompatActivity() {
 
