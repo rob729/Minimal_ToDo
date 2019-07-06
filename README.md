@@ -6,8 +6,18 @@
 ### A fully Material ToDo app with minimal features, just enough to be useful.
 #### It can be used as reminder for the daily tasks or to just store your daily tasks which are to be performed in a day
 
-![](https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s2.png)
-![](https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s1.png)
-![](https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s3.png)
+### Screenshots
+<table>
+        <tr>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s1.png" height = "480" width="230"></td>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s2.png" height = "480" width="230"></td>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s3.png" height = "480" width="230"></td>
+        </tr>
+    <tr>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s4.png" height = "480" width="230"></td>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s5.png" height = "480" width="230"></td>
+<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s6.png" height = "480" width="230"></td>
+        </tr>
+</table>     
 
 #### Download[ .apk](https://github.com/rob729/Minimal_ToDo/raw/master/app-debug.apk)
