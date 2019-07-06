@@ -48,6 +48,7 @@ class NewToDoFragment : Fragment() {
             inflater,
             R.layout.fragment_new_to_do, container, false
         )
+
         val cross = resources.getDrawable(R.drawable.ic_cancel)
         cross?.setColorFilter(resources.getColor(R.color.icons), PorterDuff.Mode.SRC_ATOP)
         if (activity?.actionBar != null) {
