@@ -22,17 +22,24 @@ class notify() : Worker() {
         Looper.prepare()
         val appSharedPrefs = PreferenceManager
             .getDefaultSharedPreferences(this.applicationContext)
-        val notificationManager = applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(b, "Default Channel", NotificationManager.IMPORTANCE_DEFAULT)
+            val notificationChannel =
+                NotificationChannel(b, "Default Channel", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(notificationChannel)
         }
 
         if (appSharedPrefs.contains("Task")) {
-            task = appSharedPrefs.getString("Task", " ")
+            task = appSharedPrefs.getString("Task", " ").toString()
         }
         val intent = Intent(applicationContext, MainActivity::class.java)
-        val pi = PendingIntent.getActivity(applicationContext, 333, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pi = PendingIntent.getActivity(
+            applicationContext,
+            333,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
         val notification = NotificationCompat.Builder(applicationContext, b)
             .setSmallIcon(R.drawable.ic_notification)
             .setColor(Color.rgb(30, 136, 229))

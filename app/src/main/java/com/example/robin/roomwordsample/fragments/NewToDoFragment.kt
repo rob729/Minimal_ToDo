@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -49,14 +50,19 @@ class NewToDoFragment : Fragment() {
             R.layout.fragment_new_to_do, container, false
         )
 
-        val cross = resources.getDrawable(R.drawable.ic_cancel)
-        cross?.setColorFilter(resources.getColor(R.color.icons), PorterDuff.Mode.SRC_ATOP)
+        val cross = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_cancel) }
+        cross?.setColorFilter(
+            ContextCompat.getColor(this.context!!, R.color.icons),
+            PorterDuff.Mode.SRC_ATOP
+        )
         if (activity?.actionBar != null) {
             activity?.actionBar?.elevation = 0F
             activity?.actionBar?.setDisplayShowTitleEnabled(false)
             activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
             activity?.actionBar?.setHomeAsUpIndicator(cross)
         }
+
+        binding.userToDoEditText.requestFocus()
 
 //       showKeyboard()
         val appSharedPrefs = PreferenceManager
@@ -96,7 +102,7 @@ class NewToDoFragment : Fragment() {
             val myFormat = "dd MMM, yyyy"
             val sdf = SimpleDateFormat(myFormat, Locale.US)
             val mDatePicker = DatePickerDialog(
-                context,
+                this.context!!,
                 DatePickerDialog.OnDateSetListener { _, selectedyear, selectedmonth, selectedday ->
                     binding.EnterDate.setText(selectedday.toString() + "/" + (selectedmonth + 1) + "/" + selectedyear)
                     year = selectedyear
@@ -110,7 +116,11 @@ class NewToDoFragment : Fragment() {
         binding.makeToDoFloatingActionButton.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(binding.userToDoEditText.text)) {
-                val snackbar = Snackbar.make(binding.ParentLayout, "Task field cannot be empty", Snackbar.LENGTH_SHORT)
+                val snackbar = Snackbar.make(
+                    binding.ParentLayout,
+                    "Task field cannot be empty",
+                    Snackbar.LENGTH_SHORT
+                )
                 snackbar.show()
             } else {
                 val task = binding.userToDoEditText.text.toString()
@@ -128,7 +138,10 @@ class NewToDoFragment : Fragment() {
                     c.set(Calendar.SECOND, 0)
                     c.set(Calendar.MILLISECOND, 0)
                     val notifyManager = OneTimeWorkRequest.Builder(notify::class.java)
-                        .setInitialDelay(c.timeInMillis - System.currentTimeMillis(), TimeUnit.MILLISECONDS)
+                        .setInitialDelay(
+                            c.timeInMillis - System.currentTimeMillis(),
+                            TimeUnit.MILLISECONDS
+                        )
                         .addTag(c.timeInMillis.toString())
                         .build()
                     tag = c.timeInMillis.toString()
@@ -150,7 +163,8 @@ class NewToDoFragment : Fragment() {
 //    }
 //
     fun closeKeyboard() {
-        val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
