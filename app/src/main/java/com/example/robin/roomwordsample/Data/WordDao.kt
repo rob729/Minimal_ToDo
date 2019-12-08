@@ -20,4 +20,7 @@ interface WordDao {
 
     @Query("SELECT * from word_table ORDER BY word ASC")
     fun getAllWords(): LiveData<List<Word>>
+
+    @Query("UPDATE word_table SET is_complete = :mark WHERE word=:task")
+    fun toggleCompletion(task: String, mark: Boolean)
 }

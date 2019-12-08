@@ -47,6 +47,12 @@
                 android:layout_below="@id/task"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/TxtImg"/>
+        <CheckBox
+                android:id="@+id/completionToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
