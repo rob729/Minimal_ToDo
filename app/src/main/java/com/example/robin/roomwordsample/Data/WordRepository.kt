@@ -12,6 +12,11 @@ class WordRepository(private val wordDao: WordDao) {
     }
 
     @WorkerThread
+    fun toggleCompletion(task: String, mark: Boolean){
+        wordDao.toggleCompletion(task,mark)
+    }
+
+    @WorkerThread
     fun delete(word: Word) {
         wordDao.deleteTask(word)
     }
