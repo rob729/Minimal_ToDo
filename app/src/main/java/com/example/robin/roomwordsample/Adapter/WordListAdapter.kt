@@ -1,6 +1,5 @@
 package com.example.robin.roomwordsample.Adapter
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.Data.Word
@@ -60,13 +58,17 @@ class WordListAdapter internal constructor(
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
         holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
         holder.completionToggle.isChecked = current.isComplete
-        holder.completionToggle.setOnCheckedChangeListener{
-                _, isChecked ->
-                toggleCompletion(current.word,isChecked)
+        holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
+            toggleCompletion(current.word, isChecked)
         }
     }
 
-    internal fun setWords(words: List<Word>, ctx: Context?, wordViewModel: WordViewModel, view: View) {
+    internal fun setWords(
+        words: List<Word>,
+        ctx: Context?,
+        wordViewModel: WordViewModel,
+        view: View
+    ) {
         this.words = words as ArrayList<Word>
         this.ctx = ctx!!
         this.wordViewModel = wordViewModel
@@ -78,7 +80,7 @@ class WordListAdapter internal constructor(
 
     fun getList() = words
 
-    private fun toggleCompletion(task: String, mark: Boolean){
+    private fun toggleCompletion(task: String, mark: Boolean) {
         wordViewModel.markAsComplete(task, mark)
     }
 

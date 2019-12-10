@@ -52,13 +52,21 @@ class MainFragment : Fragment() {
             } else {
                 binding.emptyPh.visibility = View.INVISIBLE
             }
-            words?.let { wordListAdapter.setWords(it, context, wordViewModel, binding.recyclerview) }
+            words?.let {
+                wordListAdapter.setWords(
+                    it,
+                    context,
+                    wordViewModel,
+                    binding.recyclerview
+                )
+            }
         })
 
         enableSwipeToDeleteAndUndo(wordListAdapter)
 
         binding.fab.setOnClickListener {
-            it.findNavController().navigate(MainFragmentDirections.actionMainFragmentToNewToDoFragment())
+            it.findNavController()
+                .navigate(MainFragmentDirections.actionMainFragmentToNewToDoFragment())
         }
         setHasOptionsMenu(true)
         return binding.root
@@ -90,7 +98,11 @@ class MainFragment : Fragment() {
 
 
                 val snackbar = Snackbar
-                    .make(binding.coodLayout, "Item was removed from the list.", Snackbar.LENGTH_LONG)
+                    .make(
+                        binding.coodLayout,
+                        "Item was removed from the list.",
+                        Snackbar.LENGTH_LONG
+                    )
                 snackbar.setAction("UNDO") {
                     wordListAdapter.restoreItem(item, position)
                     binding.recyclerview.scrollToPosition(position)

@@ -124,6 +124,7 @@ class NewToDoFragment : Fragment() {
                 snackbar.show()
             } else {
                 val task = binding.userToDoEditText.text.toString()
+                val description = binding.descriptionEditText.text.toString()
                 var tag = "tag"
                 val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US)
                 val tm = formatter.format(Date(System.currentTimeMillis()))
@@ -148,7 +149,7 @@ class NewToDoFragment : Fragment() {
                     WorkManager.getInstance().enqueue(notifyManager)
                 }
                 replyIntent.putExtra("tag", tag)
-                wordViewModel.insert(Word(task, tm, tag))
+                wordViewModel.insert(Word(task, tm, tag, false, description))
                 fragmentManager?.popBackStack()
                 closeKeyboard()
 
