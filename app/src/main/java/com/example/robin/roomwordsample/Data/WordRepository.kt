@@ -12,8 +12,8 @@ class WordRepository(private val wordDao: WordDao) {
     }
 
     @WorkerThread
-    fun toggleCompletion(task: String, mark: Boolean) {
-        wordDao.toggleCompletion(task, mark)
+    fun toggleCompletion(id: Int, mark: Boolean) {
+        wordDao.toggleCompletion(id, mark)
     }
 
     @WorkerThread

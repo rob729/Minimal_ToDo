@@ -59,7 +59,7 @@ class WordListAdapter internal constructor(
         holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
         holder.completionToggle.isChecked = current.isComplete
         holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
-            toggleCompletion(current.word, isChecked)
+            toggleCompletion(current.id, isChecked)
         }
     }
 
@@ -80,8 +80,8 @@ class WordListAdapter internal constructor(
 
     fun getList() = words
 
-    private fun toggleCompletion(task: String, mark: Boolean) {
-        wordViewModel.markAsComplete(task, mark)
+    private fun toggleCompletion(id: Int, mark: Boolean) {
+        wordViewModel.markAsComplete(id, mark)
     }
 
     fun removeitem(position: Int) {
