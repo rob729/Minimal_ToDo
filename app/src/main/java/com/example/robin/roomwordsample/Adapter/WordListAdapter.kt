@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +43,7 @@ class WordListAdapter internal constructor(
         val timeItemView: TextView = itemView.findViewById(R.id.time)
         val avImageView: AvatarImageView = itemView.findViewById(R.id.TxtImg)
         val relcard: RelativeLayout = itemView.findViewById(R.id.relcard)
+        val completionToggle: CheckBox = itemView.findViewById(R.id.completionToggle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -55,9 +57,18 @@ class WordListAdapter internal constructor(
         holder.timeItemView.text = current.time
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
         holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
+        holder.completionToggle.isChecked = current.isComplete
+        holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
+            toggleCompletion(current.id, isChecked)
+        }
     }
 
-    internal fun setWords(words: List<Word>, ctx: Context?, wordViewModel: WordViewModel, view: View) {
+    internal fun setWords(
+        words: List<Word>,
+        ctx: Context?,
+        wordViewModel: WordViewModel,
+        view: View
+    ) {
         this.words = words as ArrayList<Word>
         this.ctx = ctx!!
         this.wordViewModel = wordViewModel
@@ -68,6 +79,10 @@ class WordListAdapter internal constructor(
     override fun getItemCount() = words.size
 
     fun getList() = words
+
+    private fun toggleCompletion(id: Int, mark: Boolean) {
+        wordViewModel.markAsComplete(id, mark)
+    }
 
     fun removeitem(position: Int) {
         wordViewModel.delete(words[position])
@@ -81,3 +96,4 @@ class WordListAdapter internal constructor(
         wordViewModel.insert(word)
     }
 }
+

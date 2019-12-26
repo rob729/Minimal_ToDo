@@ -31,6 +31,10 @@ class WordViewModel(application: Application) : AndroidViewModel(Application()) 
         repository.delete(word)
     }
 
+    fun markAsComplete(id: Int, mark: Boolean) = scope.launch(Dispatchers.IO) {
+        repository.toggleCompletion(id, mark)
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

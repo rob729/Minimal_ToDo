@@ -13,7 +13,7 @@ import androidx.work.Worker
 import com.example.robin.roomwordsample.Activity.MainActivity
 import com.example.robin.roomwordsample.R
 
-class notify() : Worker() {
+class notify : Worker() {
 
     private val b = "420"
     var task = " "
