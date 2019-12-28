@@ -6,9 +6,12 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.Data.Word
@@ -56,13 +59,13 @@ class WordListAdapter internal constructor(
         val current = words[position]
         holder.wordItemView.text = current.word
 
-        if(current.isComplete){
+        if (current.isComplete) {
             holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.colorAccent))
             holder.wordItemView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-        }
-        else{
+        } else {
             holder.wordItemView.setTextColor(ctx.resources.getColor(R.color.textColor))
-            holder.wordItemView.paintFlags = holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            holder.wordItemView.paintFlags =
+                holder.wordItemView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
         holder.timeItemView.text = current.time
@@ -71,6 +74,31 @@ class WordListAdapter internal constructor(
         holder.completionToggle.isChecked = current.isComplete
         holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
             toggleCompletion(current.id, isChecked)
+        }
+
+        holder.relcard.setOnClickListener {
+            val mDialogView =
+                LayoutInflater.from(ctx).inflate(R.layout.task_description_dialog, null)
+            mDialogView.findViewById<TextView>(R.id.name).text = current.word
+            if (current.description.isNotEmpty()) {
+                mDialogView.findViewById<TextView>(R.id.description).text = current.description
+            } else {
+                mDialogView.findViewById<TextView>(R.id.description).visibility = View.GONE
+            }
+            mDialogView.findViewById<TextView>(R.id.time).text = current.time
+            mDialogView.findViewById<TextView>(R.id.status).text =
+                if (current.isComplete) ctx.getString(R.string.completed) else ctx.getString(R.string.not_completed)
+            mDialogView.findViewById<TextView>(R.id.status).setTextColor(
+                ContextCompat.getColor(
+                    ctx,
+                    if (current.isComplete) R.color.colorAccent else R.color.textColor
+                )
+            )
+            val mBuilder = AlertDialog.Builder(ctx).setView(mDialogView)
+            val mAlertDialog = mBuilder.show()
+            mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
+                mAlertDialog.dismiss()
+            }
         }
     }
 
