@@ -15,5 +15,15 @@
     <string name="completed">Completed &#10003;</string>
     <string name="not_completed">Not completed</string>
 
+    <string-array name="colors">
+        <item>#F4511E</item>
+        <item>#115EE7</item>
+        <item>#09BB45</item>
+        <item>#7B1FA2</item>
+        <item>#BF1B13</item>
+        <item>#00796B</item>
+        <item>#FF8F00</item>
+        <item>#D81B60</item>
+    </string-array>
 
 </resources>

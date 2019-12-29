@@ -28,6 +28,7 @@ import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 
 class NewToDoFragment : Fragment() {
@@ -39,6 +40,7 @@ class NewToDoFragment : Fragment() {
     var hr = 0
     var min = 0
     private lateinit var wordViewModel: WordViewModel
+    val colors = resources.getStringArray(R.array.colors)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -149,7 +151,16 @@ class NewToDoFragment : Fragment() {
                     WorkManager.getInstance().enqueue(notifyManager)
                 }
                 replyIntent.putExtra("tag", tag)
-                wordViewModel.insert(Word(task, tm, tag, false, description))
+                wordViewModel.insert(
+                    Word(
+                        task,
+                        tm,
+                        tag,
+                        false,
+                        description,
+                        colors[Random.nextInt(0, colors.size-1)]
+                    )
+                )
                 fragmentManager?.popBackStack()
                 closeKeyboard()
 
