@@ -31,16 +31,6 @@ class WordListAdapter internal constructor(
     private lateinit var view: View
     private val parentView: FloatingActionButton = v
     private lateinit var wordViewModel: WordViewModel
-    private val colors: IntArray = intArrayOf(
-        Color.rgb(244, 81, 30),
-        Color.rgb(17, 94, 231),
-        Color.rgb(9, 187, 69),
-        Color.rgb(123, 31, 162),
-        Color.rgb(191, 27, 19),
-        Color.rgb(0, 121, 107),
-        Color.rgb(255, 143, 0),
-        Color.rgb(216, 27, 96)
-    )
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.task)
@@ -70,7 +60,7 @@ class WordListAdapter internal constructor(
 
         holder.timeItemView.text = current.time
         holder.avImageView.setText(current.word.toCharArray()[0] + "")
-        holder.avImageView.avatarBackgroundColor = colors[Random.nextInt(0, 8)]
+        holder.avImageView.avatarBackgroundColor = Color.parseColor(current.color)
         holder.completionToggle.isChecked = current.isComplete
         holder.completionToggle.setOnCheckedChangeListener { _, isChecked ->
             toggleCompletion(current.id, isChecked)
