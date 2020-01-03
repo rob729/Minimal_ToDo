@@ -40,4 +40,8 @@ class WordViewModel(application: Application) : AndroidViewModel(Application()) 
         parentJob.cancel()
     }
 
+    fun update(id: Int, word: String, description: String) = scope.launch(Dispatchers.IO) {
+        repository.update(id, word, description)
+    }
+
 }
