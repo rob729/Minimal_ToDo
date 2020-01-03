@@ -12,6 +12,11 @@ class WordRepository(private val wordDao: WordDao) {
     }
 
     @WorkerThread
+    fun update(id: Int, name: String, description: String) {
+        wordDao.update(id, name, description)
+    }
+
+    @WorkerThread
     fun toggleCompletion(id: Int, mark: Boolean) {
         wordDao.toggleCompletion(id, mark)
     }
