@@ -52,8 +52,10 @@
                 android:id="@+id/completionToggle"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_marginEnd="15dp"
+                android:button="@drawable/custom_checkbox" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

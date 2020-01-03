@@ -20,8 +20,8 @@
                     android:id="@+id/name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:layout_weight="5"
+                    android:enabled="false"
                     android:text="@string/task"
                     android:textColor="@color/textColor"
                     android:textSize="19sp" />
@@ -37,10 +37,10 @@
 
         <EditText
                 android:id="@+id/description"
-                android:enabled="false"
-                android:textColor="@color/textColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColor="@color/textColor"
                 android:textSize="16sp"
                 tools:text="Lorem Ipsum random text here" />
     </LinearLayout>
@@ -71,13 +71,14 @@
 
     <Button
             android:id="@+id/save"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/colorAccent"
             android:text="@string/button_save"
-            android:textColor="@color/icons" />
+            android:textColor="@color/icons"
+            android:visibility="gone" />
+
     <Button
             android:id="@+id/close"
             android:layout_width="match_parent"
