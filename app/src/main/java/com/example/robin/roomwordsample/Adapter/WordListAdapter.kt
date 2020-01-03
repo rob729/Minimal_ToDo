@@ -6,10 +6,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +14,9 @@ import androidx.work.WorkManager
 import com.example.robin.roomwordsample.Data.Word
 import com.example.robin.roomwordsample.Data.WordViewModel
 import com.example.robin.roomwordsample.R
+import com.example.robin.roomwordsample.Utils.utils
 import com.github.abdularis.civ.AvatarImageView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlin.random.Random
 
 class WordListAdapter internal constructor(
     context: Context?, v: FloatingActionButton
@@ -69,11 +66,17 @@ class WordListAdapter internal constructor(
         holder.relcard.setOnClickListener {
             val mDialogView =
                 LayoutInflater.from(ctx).inflate(R.layout.task_description_dialog, null)
-            mDialogView.findViewById<TextView>(R.id.name).text = current.word
+            val edit: TextView = mDialogView.findViewById(R.id.edit)
+            val save: Button = mDialogView.findViewById(R.id.save)
+            val desc: EditText = mDialogView.findViewById(R.id.description)
+            val name: EditText = mDialogView.findViewById(R.id.name)
+
+
+            name.setText(current.word)
             if (current.description.isNotEmpty()) {
-                mDialogView.findViewById<TextView>(R.id.description).text = current.description
+                desc.setText(current.description)
             } else {
-                mDialogView.findViewById<TextView>(R.id.description).visibility = View.GONE
+                desc.visibility = View.GONE
             }
             mDialogView.findViewById<TextView>(R.id.time).text = current.time
             mDialogView.findViewById<TextView>(R.id.status).text =
@@ -86,8 +89,24 @@ class WordListAdapter internal constructor(
             )
             val mBuilder = AlertDialog.Builder(ctx).setView(mDialogView)
             val mAlertDialog = mBuilder.show()
+
+            edit.setOnClickListener {
+                save.visibility = View.VISIBLE
+                edit.visibility = View.GONE
+                name.isEnabled = true
+                desc.isEnabled = true
+                name.requestFocus()
+                utils.showKeyboard(ctx)
+            }
+            save.setOnClickListener {
+                this.wordViewModel.update(current.id, name.text.toString(), desc.text.toString())
+                mAlertDialog.dismiss()
+                utils.closeKeyboard(ctx)
+            }
+
             mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
                 mAlertDialog.dismiss()
+                utils.closeKeyboard(ctx)
             }
         }
     }

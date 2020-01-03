@@ -12,6 +12,9 @@ interface WordDao {
     @Insert
     fun insert(word: Word)
 
+    @Query("UPDATE word_table SET description=:desc, word=:word WHERE id=:id")
+    fun update(id: Int, word: String, desc: String)
+
     @Delete
     fun deleteTask(word: Word)
 
