@@ -26,7 +26,7 @@ class CustomTextInputLayout : TextInputLayout {
         super.addView(child, index, params)
     }
 
-    protected override fun onDraw(canvas: Canvas) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         if (!mIsHintSet && ViewCompat.isLaidOut(this)) {

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.*
-import kotlinx.coroutines.android.Main
 import kotlin.coroutines.CoroutineContext
 
 class WordViewModel(application: Application) : AndroidViewModel(Application()) {

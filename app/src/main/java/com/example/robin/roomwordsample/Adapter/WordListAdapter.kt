@@ -26,7 +26,6 @@ class WordListAdapter internal constructor(
     private var words = ArrayList<Word>() // Cached copy of words
     private lateinit var ctx: Context
     private lateinit var view: View
-    private val parentView: FloatingActionButton = v
     private lateinit var wordViewModel: WordViewModel
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
