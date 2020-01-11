@@ -66,7 +66,7 @@ class MainFragment : Fragment() {
 
         binding.fab.setOnClickListener {
             it.findNavController()
-                .navigate(MainFragmentDirections.actionMainFragmentToNewToDoFragment())
+                .navigate(MainFragmentDirections.actionMainFragmentToNewTaskFragment())
         }
         setHasOptionsMenu(true)
         return binding.root
@@ -90,12 +90,10 @@ class MainFragment : Fragment() {
         val swipeToDeleteCallback = object : SwipeToDeleteCallback(context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
 
-
                 val position = viewHolder.adapterPosition
                 val item = wordListAdapter.getList()[position]
 
                 wordListAdapter.removeitem(position)
-
 
                 val snackbar = Snackbar
                     .make(

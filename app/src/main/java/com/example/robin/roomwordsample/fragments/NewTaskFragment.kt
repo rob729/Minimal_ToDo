@@ -1,36 +1,35 @@
-package com.example.robin.roomwordsample.fragments
+package com.example.robin.roomwordsample
 
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
+import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.Data.Word
 import com.example.robin.roomwordsample.Data.WordViewModel
-import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.Utils.notify
 import com.example.robin.roomwordsample.Utils.utils
-import com.example.robin.roomwordsample.databinding.FragmentNewToDoBinding
+import com.example.robin.roomwordsample.databinding.FragmentNewTaskBinding
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
-
-class NewToDoFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class NewTaskFragment : Fragment() {
 
     var checked: Boolean = false
     var year = 0
@@ -38,37 +37,22 @@ class NewToDoFragment : Fragment() {
     var day = 0
     var hr = 0
     var min = 0
-    private lateinit var wordViewModel: WordViewModel
+    val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US) }
     private val colors by lazy { resources.getStringArray(R.array.colors) }
+    private val wordViewModel: WordViewModel by lazy {
+        ViewModelProviders.of(this).get(WordViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentNewToDoBinding>(
+        val binding = DataBindingUtil.inflate<FragmentNewTaskBinding>(
             inflater,
-            R.layout.fragment_new_to_do, container, false
+            R.layout.fragment_new_task, container, false
         )
 
-        val cross = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_cancel) }
-        cross?.setColorFilter(
-            ContextCompat.getColor(this.context!!, R.color.icons),
-            PorterDuff.Mode.SRC_ATOP
-        )
-        if (activity?.actionBar != null) {
-            activity?.actionBar?.elevation = 0F
-            activity?.actionBar?.setDisplayShowTitleEnabled(false)
-            activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
-            activity?.actionBar?.setHomeAsUpIndicator(cross)
-        }
-
-        binding.userToDoEditText.requestFocus()
-
-        val appSharedPrefs = PreferenceManager
-            .getDefaultSharedPreferences(context?.applicationContext)
-
-        wordViewModel = ViewModelProviders.of(this).get(WordViewModel::class.java)
         binding.HasRemind.setOnCheckedChangeListener { _, isChecked ->
             if (!isChecked) {
                 binding.EnterDateTime.visibility = View.INVISIBLE
@@ -100,7 +84,6 @@ class NewToDoFragment : Fragment() {
             val mMonth = mcurrentDate.get(Calendar.MONTH)
             val mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH)
             val myFormat = "dd MMM, yyyy"
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
             val mDatePicker = DatePickerDialog(
                 this.context!!,
                 DatePickerDialog.OnDateSetListener { _, selectedyear, selectedmonth, selectedday ->
@@ -113,57 +96,56 @@ class NewToDoFragment : Fragment() {
             mDatePicker.show()
         }
 
-        binding.makeToDoFloatingActionButton.setOnClickListener {
-            val replyIntent = Intent()
-            if (TextUtils.isEmpty(binding.userToDoEditText.text)) {
+        binding.submit.setOnClickListener {
+            if (TextUtils.isEmpty(binding.task.text)) {
                 val snackbar = Snackbar.make(
-                    binding.ParentLayout,
+                    binding.parentLayout,
                     "Task field cannot be empty",
                     Snackbar.LENGTH_SHORT
                 )
                 snackbar.show()
             } else {
-                val task = binding.userToDoEditText.text.toString()
-                val description = binding.descriptionEditText.text.toString()
-                var tag = "tag"
-                val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US)
+                val task = binding.task.text.toString()
+                val description = binding.description.text.toString()
                 val tm = formatter.format(Date(System.currentTimeMillis()))
-//                replyIntent.putExtra(NewWordActivity.EXTRA_REPLY, task)
-                replyIntent.putExtra("Time", tm)
                 if (checked) {
-                    val prefsEditor = appSharedPrefs.edit()
-                    prefsEditor.putString("Task", binding.userToDoEditText.text.toString())
-                    prefsEditor.apply()
                     val c = Calendar.getInstance()
                     c.set(year, month, day, hr, min)
                     c.set(Calendar.SECOND, 0)
                     c.set(Calendar.MILLISECOND, 0)
+                    val data = Data.Builder()
+                    data.putString("Task Name", binding.task.text.toString())
+
                     val notifyManager = OneTimeWorkRequest.Builder(notify::class.java)
+                        .setInputData(data.build())
                         .setInitialDelay(
                             c.timeInMillis - System.currentTimeMillis(),
                             TimeUnit.MILLISECONDS
                         )
                         .addTag(c.timeInMillis.toString())
                         .build()
-                    tag = c.timeInMillis.toString()
-                    WorkManager.getInstance().enqueue(notifyManager)
+                    val tag = c.timeInMillis.toString()
+                    WorkManager.getInstance(this.context!!).enqueue(notifyManager)
                 }
-                replyIntent.putExtra("tag", tag)
                 wordViewModel.insert(
                     Word(
                         task,
                         tm,
-                        tag,
+                        tag.toString(),
                         false,
                         description,
                         colors[Random.nextInt(0, colors.size - 1)]
                     )
                 )
-                fragmentManager?.popBackStack()
-                utils.closeKeyboard(context!!)
+                it.findNavController()
+                    .navigate(NewTaskFragmentDirections.actionNewTaskFragmentToMainFragment())
 
             }
         }
+
+
         return binding.root
     }
+
+
 }

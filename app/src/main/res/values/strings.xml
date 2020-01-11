@@ -9,12 +9,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="task">Task</string>
+    <string name="task">Task Name</string>
     <string name="description">Description</string>
     <string name="close">Close</string>
     <string name="completed">Completed &#10003;</string>
     <string name="not_completed">Not completed</string>
     <string name="edit">&#9998; Edit</string>
+    <string name="submit">Submit</string>
+    <string name="create_task">Create Task</string>
 
     <string-array name="colors">
         <item>#F4511E</item>
