@@ -10,14 +10,14 @@
 ### Screenshots
 <table>
         <tr>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s1.png" height = "480" width="230"></td>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s2.png" height = "480" width="230"></td>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s3.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s1.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s2.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s3.png" height = "480" width="230"></td>
         </tr>
     <tr>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s4.png" height = "480" width="230"></td>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s5.png" height = "480" width="230"></td>
-<td><img src = "https://raw.githubusercontent.com/rob729/Minimal_ToDo/master/screenshots/s6.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s4.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s5.png" height = "480" width="230"></td>
+<td><img src = "screenshots/s6.png" height = "480" width="230"></td>
         </tr>
 </table>     
 
