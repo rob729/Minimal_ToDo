@@ -3,18 +3,13 @@ package com.example.robin.roomwordsample.Activity
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.custom_toolbar.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,25 +34,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
-
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.custom_toolbar)
-        supportActionBar?.elevation = 0F
-
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            supportActionBar?.customView?.title?.text = destination.label.toString()
-            Log.e("TAG", destination.label.toString() + " title")
-        }
+//        val navController = this.findNavController(R.id.myNavHostFragment)
+//        NavigationUI.setupActionBarWithNavController(this, navController)
+//
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+//        supportActionBar?.setCustomView(R.layout.custom_toolbar)
+//        supportActionBar?.elevation = 0F
+//
+//        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+//            supportActionBar?.customView?.title?.text = destination.label.toString()
+//            Log.e("TAG", destination.label.toString() + " title")
+//        }
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.myNavHostFragment)
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = this.findNavController(R.id.myNavHostFragment)
+//        return navController.navigateUp() || super.onSupportNavigateUp()
+//    }
 
 
 }

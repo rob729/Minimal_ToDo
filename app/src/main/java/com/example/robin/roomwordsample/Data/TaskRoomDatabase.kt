@@ -6,16 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = arrayOf(Word::class), version = 5)
-abstract class WordRoomDatabase : RoomDatabase() {
+@Database(entities = [Task::class], version = 5)
+abstract class TaskRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun wordDao(): TaskDao
 
     companion object {
         @Volatile
-        private var INSTANCE: WordRoomDatabase? = null
+        private var INSTANCE: TaskRoomDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): WordRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): TaskRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -23,7 +23,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    WordRoomDatabase::class.java,
+                    TaskRoomDatabase::class.java,
                     "Word_database"
                 ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance

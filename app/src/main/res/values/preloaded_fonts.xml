@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/montserrat</item>
+        <item>@font/montserrat_alternates</item>
+        <item>@font/open_sans</item>
+        <item>@font/pacifico</item>
+        <item>@font/poppins_medium</item>
+        <item>@font/roboto_slab</item>
+        <item>@font/roboto_slab_bold</item>
+        <item>@font/sofia</item>
+    </array>
+</resources>

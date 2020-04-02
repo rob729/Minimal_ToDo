@@ -7,6 +7,7 @@
             android:id="@+id/coodLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/bgColor"
             tools:context=".MainFragment">
 
         <RelativeLayout
@@ -16,10 +17,33 @@
                 android:orientation="vertical"
                 tools:context=".Activity.MainActivity">
 
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:title=" ">
+
+                <TextView
+                        android:id="@+id/title"
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/pacifico"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textColor="@color/textColor"
+                        android:textSize="24sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar"
+                    android:layout_alignParentBottom="true"
                     tools:listitem="@layout/row_layout" />
 
             <LinearLayout
@@ -50,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
+                android:transitionName="shared_container"
                 app:backgroundTint="@color/colorAccent"
-                app:srcCompat="@drawable/ic_add" />
+                app:srcCompat="@drawable/ic_create" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -6,28 +6,28 @@ import androidx.lifecycle.LiveData
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class WordViewModel(application: Application) : AndroidViewModel(Application()) {
+class TaskViewModel(application: Application) : AndroidViewModel(Application()) {
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository: WordRepository
-    val allWords: LiveData<List<Word>>
+    private val repository: TaskRepository
+    val allWords: LiveData<List<Task>>
 
     init {
-        val wordsDao = WordRoomDatabase.getDatabase(application, scope).wordDao()
-        repository = WordRepository(wordsDao)
+        val wordsDao = TaskRoomDatabase.getDatabase(application, scope).wordDao()
+        repository = TaskRepository(wordsDao)
         allWords = repository.allWords
     }
 
-    fun insert(word: Word) = scope.launch(Dispatchers.IO) {
-        repository.insert(word)
+    fun insert(task: Task) = scope.launch(Dispatchers.IO) {
+        repository.insert(task)
     }
 
-    fun delete(word: Word) = scope.launch(Dispatchers.IO) {
-        repository.delete(word)
+    fun delete(task: Task) = scope.launch(Dispatchers.IO) {
+        repository.delete(task)
     }
 
     fun markAsComplete(id: Int, mark: Boolean) = scope.launch(Dispatchers.IO) {

@@ -7,4 +7,5 @@
     <color name="icons">#FFFFFF</color>
 
     <color name="textColor">#000000</color>
+    <color name="bgColor">#FAFAFA</color>
 </resources>

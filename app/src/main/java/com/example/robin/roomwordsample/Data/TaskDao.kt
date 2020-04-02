@@ -7,22 +7,22 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface WordDao {
+interface TaskDao {
 
     @Insert
-    fun insert(word: Word)
+    fun insert(task: Task)
 
     @Query("UPDATE word_table SET description=:desc, word=:word WHERE id=:id")
     fun update(id: Int, word: String, desc: String)
 
     @Delete
-    fun deleteTask(word: Word)
+    fun deleteTask(task: Task)
 
     @Query("DELETE FROM word_table")
     fun deleteAll()
 
-    @Query("SELECT * from word_table ORDER BY word ASC")
-    fun getAllWords(): LiveData<List<Word>>
+    @Query("SELECT * from word_table ORDER BY id ASC")
+    fun getAllWords(): LiveData<List<Task>>
 
     @Query("UPDATE word_table SET is_complete = :mark WHERE id=:id")
     fun toggleCompletion(id: Int, mark: Boolean)

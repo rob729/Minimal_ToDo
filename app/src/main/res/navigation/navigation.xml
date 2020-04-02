@@ -11,21 +11,13 @@
             tools:layout="@layout/fragment_main">
         <action
                 android:id="@+id/action_mainFragment_to_newTaskFragment"
-                app:destination="@id/newTaskFragment"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+                app:destination="@id/newTaskFragment" />
     </fragment>
-    <fragment
-            android:id="@+id/action_settings"
-            android:name="com.example.robin.roomwordsample.fragments.Settings"
-            android:label="Settings" />
     <fragment
             android:id="@+id/newTaskFragment"
             android:name="com.example.robin.roomwordsample.NewTaskFragment"
             android:label="Create New Task"
-            tools:layout="@layout/fragment_new_task" >
+            tools:layout="@layout/fragment_add_task" >
         <action
                 android:id="@+id/action_newTaskFragment_to_mainFragment"
                 app:destination="@id/mainFragment"

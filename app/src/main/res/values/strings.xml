@@ -4,8 +4,9 @@
     <string name="hint_word">Word&#8230;</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <string name="time">Time</string>
     <string name="empty_ph">No task added yet</string>
+    <string name="selected_date">%1$s/%2$s/%3$s</string>
+    <string name="selected_time">%1$s:%2$s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -17,16 +18,21 @@
     <string name="edit">&#9998; Edit</string>
     <string name="submit">Submit</string>
     <string name="create_task">Create Task</string>
+    <string name="remind_me">Remind me</string>
+    <string name="at">\@</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="choose_theme">Choose Theme</string>
 
     <string-array name="colors">
+        <item>#FF8F00</item>
         <item>#F4511E</item>
         <item>#115EE7</item>
-        <item>#09BB45</item>
         <item>#7B1FA2</item>
         <item>#BF1B13</item>
         <item>#00796B</item>
-        <item>#FF8F00</item>
         <item>#D81B60</item>
+        <item>#09BB45</item>
     </string-array>
 
 </resources>

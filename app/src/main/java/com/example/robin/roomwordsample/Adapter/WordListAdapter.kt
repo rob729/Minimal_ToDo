@@ -11,22 +11,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
-import com.example.robin.roomwordsample.Data.Word
-import com.example.robin.roomwordsample.Data.WordViewModel
+import com.example.robin.roomwordsample.Data.Task
+import com.example.robin.roomwordsample.Data.TaskViewModel
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.Utils.utils
 import com.github.abdularis.civ.AvatarImageView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class WordListAdapter internal constructor(
-    context: Context?, v: FloatingActionButton
-) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
+    context: Context?) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var words = ArrayList<Word>() // Cached copy of words
+    private var words = ArrayList<Task>() // Cached copy of words
     private lateinit var ctx: Context
     private lateinit var view: View
-    private lateinit var wordViewModel: WordViewModel
+    private lateinit var taskViewModel: TaskViewModel
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.task)
@@ -88,6 +86,7 @@ class WordListAdapter internal constructor(
             )
             val mBuilder = AlertDialog.Builder(ctx).setView(mDialogView)
             val mAlertDialog = mBuilder.show()
+            //mAlertDialog.setCancelable(false)
 
             edit.setOnClickListener {
                 save.visibility = View.VISIBLE
@@ -98,7 +97,7 @@ class WordListAdapter internal constructor(
                 utils.showKeyboard(ctx)
             }
             save.setOnClickListener {
-                this.wordViewModel.update(current.id, name.text.toString(), desc.text.toString())
+                this.taskViewModel.update(current.id, name.text.toString(), desc.text.toString())
                 mAlertDialog.dismiss()
                 utils.closeKeyboard(ctx)
             }
@@ -111,14 +110,14 @@ class WordListAdapter internal constructor(
     }
 
     internal fun setWords(
-        words: List<Word>,
+        tasks: List<Task>,
         ctx: Context?,
-        wordViewModel: WordViewModel,
+        taskViewModel: TaskViewModel,
         view: View
     ) {
-        this.words = words as ArrayList<Word>
+        this.words = tasks as ArrayList<Task>
         this.ctx = ctx!!
-        this.wordViewModel = wordViewModel
+        this.taskViewModel = taskViewModel
         this.view = view
         notifyDataSetChanged()
     }
@@ -128,19 +127,19 @@ class WordListAdapter internal constructor(
     fun getList() = words
 
     private fun toggleCompletion(id: Int, mark: Boolean) {
-        wordViewModel.markAsComplete(id, mark)
+        taskViewModel.markAsComplete(id, mark)
     }
 
     fun removeitem(position: Int) {
-        wordViewModel.delete(words[position])
+        taskViewModel.delete(words[position])
         WorkManager.getInstance().cancelAllWorkByTag(words[position].tag)
         notifyItemRemoved(position)
     }
 
-    fun restoreItem(word: Word, position: Int) {
-        words.add(position, word)
+    fun restoreItem(task: Task, position: Int) {
+        words.add(position, task)
         notifyItemChanged(position)
-        wordViewModel.insert(word)
+        taskViewModel.insert(task)
     }
 }
 

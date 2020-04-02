@@ -8,19 +8,20 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.example.robin.roomwordsample.Data.Word
-import com.example.robin.roomwordsample.Data.WordViewModel
+import com.example.robin.roomwordsample.Data.Task
+import com.example.robin.roomwordsample.Data.TaskViewModel
 import com.example.robin.roomwordsample.Utils.notify
-import com.example.robin.roomwordsample.Utils.utils
-import com.example.robin.roomwordsample.databinding.FragmentNewTaskBinding
+import com.example.robin.roomwordsample.databinding.FragmentAddTaskBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.MaterialContainerTransform
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -39,8 +40,8 @@ class NewTaskFragment : Fragment() {
     var min = 0
     val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US) }
     private val colors by lazy { resources.getStringArray(R.array.colors) }
-    private val wordViewModel: WordViewModel by lazy {
-        ViewModelProviders.of(this).get(WordViewModel::class.java)
+    private val taskViewModel: TaskViewModel by lazy {
+        ViewModelProvider(this).get(TaskViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -48,10 +49,22 @@ class NewTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentNewTaskBinding>(
+        val binding = DataBindingUtil.inflate<FragmentAddTaskBinding>(
             inflater,
-            R.layout.fragment_new_task, container, false
+            R.layout.fragment_add_task, container, false
         )
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as AppCompatActivity).actionBar?.title = ""
+
+        sharedElementEnterTransition = MaterialContainerTransform(requireContext())
+
+        binding.toolbar.setNavigationIcon(R.drawable.ic_cancel)
+
+        binding.toolbar.setNavigationOnClickListener {
+            it.findNavController().popBackStack()
+        }
 
         binding.HasRemind.setOnCheckedChangeListener { _, isChecked ->
             if (!isChecked) {
@@ -70,7 +83,7 @@ class NewTaskFragment : Fragment() {
             val mTimePicker = TimePickerDialog(
                 context,
                 TimePickerDialog.OnTimeSetListener { _, i, i1 ->
-                    binding.EnterTime.setText("$i:$i1")
+                    binding.EnterTime.setText(String.format(resources.getString(R.string.selected_time), i, i1))
                     hr = i
                     min = i1
                 }, hour, minute, false
@@ -83,11 +96,10 @@ class NewTaskFragment : Fragment() {
             val mYear = mcurrentDate.get(Calendar.YEAR)
             val mMonth = mcurrentDate.get(Calendar.MONTH)
             val mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH)
-            val myFormat = "dd MMM, yyyy"
             val mDatePicker = DatePickerDialog(
                 this.context!!,
                 DatePickerDialog.OnDateSetListener { _, selectedyear, selectedmonth, selectedday ->
-                    binding.EnterDate.setText(selectedday.toString() + "/" + (selectedmonth + 1) + "/" + selectedyear)
+                    binding.EnterDate.setText(String.format(resources.getString(R.string.selected_date), selectedday, selectedmonth+1, selectedyear))
                     year = selectedyear
                     month = selectedmonth
                     day = selectedday
@@ -98,12 +110,11 @@ class NewTaskFragment : Fragment() {
 
         binding.submit.setOnClickListener {
             if (TextUtils.isEmpty(binding.task.text)) {
-                val snackbar = Snackbar.make(
-                    binding.parentLayout,
+                Snackbar.make(
+                    binding.submit,
                     "Task field cannot be empty",
                     Snackbar.LENGTH_SHORT
-                )
-                snackbar.show()
+                ).show()
             } else {
                 val task = binding.task.text.toString()
                 val description = binding.description.text.toString()
@@ -127,9 +138,9 @@ class NewTaskFragment : Fragment() {
                     val tag = c.timeInMillis.toString()
                     WorkManager.getInstance(this.context!!).enqueue(notifyManager)
                 }
-                wordViewModel.insert(
-                    Word(
-                        task,
+                taskViewModel.insert(
+                    Task(
+                         task,
                         tm,
                         tag.toString(),
                         false,
@@ -139,10 +150,8 @@ class NewTaskFragment : Fragment() {
                 )
                 it.findNavController()
                     .navigate(NewTaskFragmentDirections.actionNewTaskFragmentToMainFragment())
-
             }
         }
-
 
         return binding.root
     }

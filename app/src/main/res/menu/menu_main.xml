@@ -4,8 +4,14 @@
         tools:context="com.example.robin.roomwordsample.Activity.MainActivity">
 
     <item
-            android:id="@+id/action_settings"
-            android:orderInCategory="100"
-            android:title="@string/action_settings"
-            app:showAsAction="never" />
+            android:id="@+id/nightMode"
+            android:title="@string/choose_theme"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_lightbulb"/>
+
+<!--    <item-->
+<!--            android:id="@+id/action_settings"-->
+<!--            android:orderInCategory="100"-->
+<!--            android:title="@string/action_settings"-->
+<!--            app:showAsAction="never" />-->
 </menu>
