@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [Task::class], version = 5)
+@Database(entities = [Task::class], version = 1)
 abstract class TaskRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): TaskDao

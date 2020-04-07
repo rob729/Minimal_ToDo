@@ -1,0 +1,17 @@
+
+Ø
+9
+android*http://schemas.android.com/apk/res/android9com.google.android.material.internal.CheckableImageButton"jstyle(?attr/materialCalendarHeaderToggleButton"23
+1÷ƒø'attr/materialCalendarHeaderToggleButton"
+*http://schemas.android.com/apk/res/androidid@+id/mtrl_picker_header_toggle"(Ğ„2&
+$È¨øid/mtrl_picker_header_toggle"Z
+*http://schemas.android.com/apk/res/androidlayout_gravity
+bottom|end"(³„2:8Õ€€"“
+*http://schemas.android.com/apk/res/androidlayout_height!@dimen/mtrl_min_touch_target_size"(õ„2*
+(š‚œø dimen/mtrl_min_touch_target_size"·
+*http://schemas.android.com/apk/res/androidlayout_marginBottom0@dimen/mtrl_calendar_header_toggle_margin_bottom"(ú„29
+7Úœø/dimen/mtrl_calendar_header_toggle_margin_bottom"®
+*http://schemas.android.com/apk/res/androidlayout_marginTop-@dimen/mtrl_calendar_header_toggle_margin_top"(ø„26
+4Ûœø,dimen/mtrl_calendar_header_toggle_margin_top"’
+*http://schemas.android.com/apk/res/androidlayout_width!@dimen/mtrl_min_touch_target_size"(ô„2*
+(š‚œø dimen/mtrl_min_touch_target_size

@@ -1,0 +1,50 @@
+
+Ä
+9
+android*http://schemas.android.com/apk/res/android
+2
+app'http://schemas.android.com/apk/res-auto
+navigation"r
+'http://schemas.android.com/apk/res-autostartDestination@id/mainFragment"(ó„ø2
+­¨øid/mainFragment"k
+*http://schemas.android.com/apk/res/androidid@+id/navigation.xml"(Ğ„2
+Ò¨øid/navigation.xml*
+    0*ÿ
+öfragment"g
+*http://schemas.android.com/apk/res/androidid@+id/mainFragment"(Ğ„2
+­¨øid/mainFragment"F
+*http://schemas.android.com/apk/res/androidlabelMinimal ToDo(€„"p
+*http://schemas.android.com/apk/res/androidname7com.example.robin.roomwordsample.fragments.MainFragment(ƒ€„*	
+        1*¤
+›action"s
+'http://schemas.android.com/apk/res-autodestination@id/newTaskFragment"(ìø2
+Õ¨øid/newTaskFragment"›
+*http://schemas.android.com/apk/res/androidid+@+id/action_mainFragment_to_newTaskFragment"(Ğ„23
+1¾€¨ø)id/action_mainFragment_to_newTaskFragment*
+    8*
+    *º
+±fragment"m
+*http://schemas.android.com/apk/res/androidid@+id/newTaskFragment"(Ğ„2
+Õ¨øid/newTaskFragment"I
+*http://schemas.android.com/apk/res/androidlabelCreate New Task(€„"i
+*http://schemas.android.com/apk/res/androidname0com.example.robin.roomwordsample.NewTaskFragment(ƒ€„*	
+        6*İ
+Ôaction"m
+'http://schemas.android.com/apk/res-autodestination@id/mainFragment"(ìø2
+­¨øid/mainFragment"ƒ
+'http://schemas.android.com/apk/res-auto	enterAnim@anim/nav_default_enter_anim"(›‚ø2%
+#¦€„øanim/nav_default_enter_anim"€
+'http://schemas.android.com/apk/res-autoexitAnim@anim/nav_default_exit_anim"(¥‚ø2$
+"§€„øanim/nav_default_exit_anim"P
+'http://schemas.android.com/apk/res-autolaunchSingleToptrue"(”ƒø2:@"
+'http://schemas.android.com/apk/res-autopopEnterAnim @anim/nav_default_pop_enter_anim"(§„ø2)
+'¨€„øanim/nav_default_pop_enter_anim"‹
+'http://schemas.android.com/apk/res-autopopExitAnim@anim/nav_default_pop_exit_anim"(¨„ø2(
+&©€„øanim/nav_default_pop_exit_anim"p
+'http://schemas.android.com/apk/res-autopopUpTo@+id/newTaskFragment"(©„ø2
+Õ¨øid/newTaskFragment"Q
+'http://schemas.android.com/apk/res-autopopUpToInclusivetrue"(ª„ø2:@"›
+*http://schemas.android.com/apk/res/androidid+@+id/action_newTaskFragment_to_mainFragment"(Ğ„23
+1Ä€¨ø)id/action_newTaskFragment_to_mainFragment*
+    .*	
+

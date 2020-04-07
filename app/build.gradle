@@ -11,7 +11,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId "com.example.robin.roomwordsample"
+        applicationId "com.rob729.roomwordsample"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
