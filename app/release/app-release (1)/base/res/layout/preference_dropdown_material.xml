@@ -1,27 +1,0 @@
-
-÷
-9
-android*http://schemas.android.com/apk/res/androidFrameLayout"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ*
-    )*
-    N*É
-ÀSpinner"]
-*http://schemas.android.com/apk/res/androidid@+id/spinner"(Ğ„2
-œ‚¨ø
-id/spinner"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"¥
-*http://schemas.android.com/apk/res/androidlayout_marginLeft(@dimen/preference_dropdown_padding_start"(÷„21
-/Ò‚œø'dimen/preference_dropdown_padding_start"¦
-*http://schemas.android.com/apk/res/androidlayout_marginStart(@dimen/preference_dropdown_padding_start"(µ‡„21
-/Ò‚œø'dimen/preference_dropdown_padding_start"N
-*http://schemas.android.com/apk/res/androidlayout_width0dp"(ô„2:h"R
-*http://schemas.android.com/apk/res/android
-visibility	invisible"(Ü„2:0*
-
-    )*b
-Zinclude"Olayout@layout/preference_material"!2$
-"æ€´ølayout/preference_material!*
-
-
-!4

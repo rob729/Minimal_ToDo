@@ -1,26 +1,0 @@
-
-Ä
-9
-android*http://schemas.android.com/apk/res/android
-+
-aapthttp://schemas.android.com/aaptset*
-                *¯
-ÔobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration300"(òÉÑ2:0¨"õ
-*http://schemas.android.com/apk/res/androidinterpolator&@android:interpolator/fast_out_slow_in"(¡ÇÑ2.
-,çÄ∞%android:interpolator/fast_out_slow_in"I
-*http://schemas.android.com/apk/res/androidpropertyNamepathData(·ÖÑ"Œ
-*http://schemas.android.com/apk/res/android	valueFromèM 6 19 C 6 20.1 6.9 21 8 21 L 16 21 C 17.1 21 18 20.1 18 19 L 18 7 L 6 7 L 6 19 Z M 19 4 L 15.5 4 L 14.5 3 L 9.5 3 L 8.5 4 L 5 4 L 5 6 L 19 6 Z(ﬁÖÑ"É
-*http://schemas.android.com/apk/res/androidvalueTo∆M 6 20 C 6 21.1 6.9 22 8 22 L 16 22 C 17.1 22 18 21.1 18 20 L 18 8 L 6 8 L 6 20 Z M 18.632 1.206 L 15.251 2.112 L 14.026 1.405 L 9.197 2.699 L 8.49 3.924 L 5.109 4.829 L 5.626 6.761 L 19.149 3.138 Z(ﬂÖÑ"P
-*http://schemas.android.com/apk/res/android	valueTypepathType"(‡ÖÑ2:0*
-                7*»
-øobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration300"(òÉÑ2:0¨"õ
-*http://schemas.android.com/apk/res/androidinterpolator&@android:interpolator/fast_out_slow_in"(¡ÇÑ2.
-,çÄ∞%android:interpolator/fast_out_slow_in"I
-*http://schemas.android.com/apk/res/androidpropertyNamepathData(·ÖÑ"N
-*http://schemas.android.com/apk/res/androidstartOffset300"(æÉÑ2:0¨"Ö
-*http://schemas.android.com/apk/res/android	valueFrom∆M 6 20 C 6 21.1 6.9 22 8 22 L 16 22 C 17.1 22 18 21.1 18 20 L 18 8 L 6 8 L 6 20 Z M 18.632 1.206 L 15.251 2.112 L 14.026 1.405 L 9.197 2.699 L 8.49 3.924 L 5.109 4.829 L 5.626 6.761 L 19.149 3.138 Z(ﬁÖÑ"Ã
-*http://schemas.android.com/apk/res/androidvalueToèM 6 19 C 6 20.1 6.9 21 8 21 L 16 21 C 17.1 21 18 20.1 18 19 L 18 7 L 6 7 L 6 19 Z M 19 4 L 15.5 4 L 14.5 3 L 9.5 3 L 8.5 4 L 5 4 L 5 6 L 19 6 Z(ﬂÖÑ"P
-*http://schemas.android.com/apk/res/android	valueTypepathType"(‡ÖÑ2:0*
-            $7

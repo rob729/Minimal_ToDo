@@ -1,45 +1,0 @@
-
-ş
-9
-android*http://schemas.android.com/apk/res/android
-layer-list*
-  G*Ù
-Ğitem*
-    *«
-¢shape*
-      *€
-xsolid"o
-*http://schemas.android.com/apk/res/androidcolor?attr/colorSurface"(¥ƒ„2
-»øattr/colorSurface*
-
-      1*â
-Ùcorners"S
-*http://schemas.android.com/apk/res/androidbottomLeftRadius4dp"(«ƒ„2:h"T
-*http://schemas.android.com/apk/res/androidbottomRightRadius4dp"(¬ƒ„2:h"P
-*http://schemas.android.com/apk/res/androidtopLeftRadius4dp"(©ƒ„2:h"Q
-*http://schemas.android.com/apk/res/androidtopRightRadius4dp"(ªƒ„2:h*
-
-    &*
-  *
-  	*³
-ªitem*
-    *…
-üshape*
-      *¢
-™solid"
-*http://schemas.android.com/apk/res/androidcolor#@color/mtrl_popupmenu_overlay_color" (¥ƒ„2,
-*¤˜ø"color/mtrl_popupmenu_overlay_color *
-       B*â
-Ùcorners"S
-*http://schemas.android.com/apk/res/androidbottomLeftRadius4dp"!(«ƒ„2:h"T
-*http://schemas.android.com/apk/res/androidbottomRightRadius4dp"!(¬ƒ„2:h"P
-*http://schemas.android.com/apk/res/androidtopLeftRadius4dp"!(©ƒ„2:h"Q
-*http://schemas.android.com/apk/res/androidtopRightRadius4dp"!(ªƒ„2:h!*
-
-      %&*¥
-œpadding"I
-*http://schemas.android.com/apk/res/androidbottom8dp"'(°ƒ„2:h"F
-*http://schemas.android.com/apk/res/androidtop8dp"'(®ƒ„2:h'*
-    )*
-  **	
-+	

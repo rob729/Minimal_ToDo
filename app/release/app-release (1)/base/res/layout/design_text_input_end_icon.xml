@@ -1,16 +1,0 @@
-
-ö
-9
-android*http://schemas.android.com/apk/res/android9com.google.android.material.internal.CheckableImageButton"Š
-*http://schemas.android.com/apk/res/android
-background?attr/actionBarItemBackground"(Ô„2(
-&‚€øattr/actionBarItemBackground"u
-*http://schemas.android.com/apk/res/androidid@+id/text_input_end_icon"(Ğ„2 
-Á‚¨øid/text_input_end_icon"i
-*http://schemas.android.com/apk/res/androidlayout_gravitycenter_vertical|end|right"(³„2:8•€€"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"¬
-*http://schemas.android.com/apk/res/androidlayout_marginStart+@dimen/mtrl_textinput_end_icon_margin_start"(µ‡„24
-2¹‚œø*dimen/mtrl_textinput_end_icon_margin_start"`
-*http://schemas.android.com/apk/res/androidlayout_widthwrap_content"(ô„2:0şÿÿÿÿÿÿÿÿ"M
-*http://schemas.android.com/apk/res/android	minHeight48dp"(À‚„2:h`"L
-*http://schemas.android.com/apk/res/androidminWidth48dp"(¿‚„2:h`

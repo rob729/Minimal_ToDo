@@ -1,47 +1,0 @@
-
-¿
-9
-android*http://schemas.android.com/apk/res/androidset*
-    @*è	
-ß	set"S
-*http://schemas.android.com/apk/res/androidorderingsequentially"(â…„2:0*	
-        )*¥
-œobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration200"(˜ƒ„2:0È"Ô
-*http://schemas.android.com/apk/res/androidinterpolatorB@interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"(Á‚„2K
-Iƒ€°øAinterpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"G
-*http://schemas.android.com/apk/res/androidpropertyNamescaleX(á…„"N
-*http://schemas.android.com/apk/res/android	valueFrom0.2"(Þ…„2:ÍÌL>"M
-*http://schemas.android.com/apk/res/androidvalueTo0.18"(ß…„2:ìQ8>*	
-        k*¥
-œobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration300"(˜ƒ„2:0¬"Ô
-*http://schemas.android.com/apk/res/androidinterpolatorB@interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"(Á‚„2K
-Iƒ€°øAinterpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"G
-*http://schemas.android.com/apk/res/androidpropertyNamescaleX(á…„"O
-*http://schemas.android.com/apk/res/android	valueFrom0.18"(Þ…„2:ìQ8>"L
-*http://schemas.android.com/apk/res/androidvalueTo0.2"(ß…„2:ÍÌL>*
-    k*
-     
-*è	
-ß	set"S
-*http://schemas.android.com/apk/res/androidorderingsequentially"!(â…„2:0*	
-        !)*¥
-œobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration200""(˜ƒ„2:0È"Ô
-*http://schemas.android.com/apk/res/androidinterpolatorB@interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1""(Á‚„2K
-Iƒ€°øAinterpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"G
-*http://schemas.android.com/apk/res/androidpropertyNamescaleY(á…„"N
-*http://schemas.android.com/apk/res/android	valueFrom0.2""(Þ…„2:ÍÌL>"M
-*http://schemas.android.com/apk/res/androidvalueTo0.18""(ß…„2:ìQ8>"*	
-        'k*¥
-œobjectAnimator"K
-*http://schemas.android.com/apk/res/androidduration300"((˜ƒ„2:0¬"Ô
-*http://schemas.android.com/apk/res/androidinterpolatorB@interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"((Á‚„2K
-Iƒ€°øAinterpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1"G
-*http://schemas.android.com/apk/res/androidpropertyNamescaleY(á…„"O
-*http://schemas.android.com/apk/res/android	valueFrom0.18"((Þ…„2:ìQ8>"L
-*http://schemas.android.com/apk/res/androidvalueTo0.2"((ß…„2:ÍÌL>(*
-    -k!*	
-.
-

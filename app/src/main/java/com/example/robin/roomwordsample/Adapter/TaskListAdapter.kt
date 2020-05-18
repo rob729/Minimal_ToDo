@@ -21,7 +21,7 @@ import com.example.robin.roomwordsample.Data.TaskViewModel
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.Utils.utils
 import com.example.robin.roomwordsample.databinding.RowLayoutBinding
-
+ 
 class TaskListAdapter(val context: Context?, val taskViewModel: TaskViewModel) :
     ListAdapter<Task, TaskListAdapter.ViewHolder>(TaskDiffCallbacks()) {
 
