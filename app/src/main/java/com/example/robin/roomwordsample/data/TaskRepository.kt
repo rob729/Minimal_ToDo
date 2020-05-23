@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Data
+package com.example.robin.roomwordsample.data
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData

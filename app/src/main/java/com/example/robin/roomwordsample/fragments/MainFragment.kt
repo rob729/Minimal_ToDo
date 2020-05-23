@@ -1,7 +1,5 @@
 package com.example.robin.roomwordsample.fragments
 
-
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
@@ -20,15 +18,13 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.robin.roomwordsample.Activity.MainActivity
-import com.example.robin.roomwordsample.Adapter.TaskListAdapter
-import com.example.robin.roomwordsample.Data.Task
-import com.example.robin.roomwordsample.Data.TaskViewModel
+import com.example.robin.roomwordsample.adapter.TaskListAdapter
+import com.example.robin.roomwordsample.data.Task
+import com.example.robin.roomwordsample.data.TaskViewModel
 import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.Utils.SwipeToDeleteCallback
+import com.example.robin.roomwordsample.utils.SwipeToDeleteCallback
 import com.example.robin.roomwordsample.databinding.FragmentMainBinding
 import com.google.android.material.snackbar.Snackbar
-
 
 class MainFragment : Fragment() {
 
@@ -38,7 +34,7 @@ class MainFragment : Fragment() {
     private val mPrefs: SharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(context)
     }
-    val editor: SharedPreferences.Editor by lazy {
+    private val editor: SharedPreferences.Editor by lazy {
         mPrefs.edit()
     }
 
@@ -47,7 +43,6 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         val nightMode = mPrefs.getBoolean("nightMode", false)
         if(nightMode){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
