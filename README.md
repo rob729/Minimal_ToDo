@@ -24,4 +24,3 @@
         </tr>
 </table>     
 
-#### Download[ .apk](https://github.com/rob729/Minimal_ToDo/raw/master/app-debug.apk)
