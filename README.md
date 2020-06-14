@@ -7,6 +7,9 @@
 ### A fully Material ToDo app with minimal features, just enough to be useful.
 #### It can be used as reminder for the daily tasks or to just store your daily tasks which are to be performed in a day
 
+<a href='https://play.google.com/store/apps/details?id=com.rob729.roomwordsample'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="30%" height="30%"/></a>
+
+
 ### Screenshots
 <table>
         <tr>
@@ -21,4 +24,3 @@
         </tr>
 </table>     
 
-#### Download[ .apk](https://github.com/rob729/Minimal_ToDo/raw/master/app-debug.apk)
