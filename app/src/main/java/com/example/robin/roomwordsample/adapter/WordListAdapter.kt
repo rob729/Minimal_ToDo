@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Adapter
+package com.example.robin.roomwordsample.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -11,10 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
-import com.example.robin.roomwordsample.Data.Task
-import com.example.robin.roomwordsample.Data.TaskViewModel
+import com.example.robin.roomwordsample.data.Task
+import com.example.robin.roomwordsample.data.TaskViewModel
 import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.Utils.utils
+import com.example.robin.roomwordsample.utils.Utils
 import com.github.abdularis.civ.AvatarImageView
 
 class WordListAdapter internal constructor(
@@ -94,17 +94,17 @@ class WordListAdapter internal constructor(
                 name.isEnabled = true
                 desc.isEnabled = true
                 name.requestFocus()
-                utils.showKeyboard(ctx)
+                Utils.showKeyboard(ctx)
             }
             save.setOnClickListener {
                 this.taskViewModel.update(current.id, name.text.toString(), desc.text.toString())
                 mAlertDialog.dismiss()
-                utils.closeKeyboard(ctx)
+                Utils.closeKeyboard(ctx)
             }
 
             mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
                 mAlertDialog.dismiss()
-                utils.closeKeyboard(ctx)
+                Utils.closeKeyboard(ctx)
             }
         }
     }

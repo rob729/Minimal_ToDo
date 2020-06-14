@@ -16,9 +16,9 @@ import androidx.navigation.findNavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.example.robin.roomwordsample.Data.Task
-import com.example.robin.roomwordsample.Data.TaskViewModel
-import com.example.robin.roomwordsample.Utils.notify
+import com.example.robin.roomwordsample.data.Task
+import com.example.robin.roomwordsample.data.TaskViewModel
+import com.example.robin.roomwordsample.utils.Notify
 import com.example.robin.roomwordsample.databinding.FragmentAddTaskBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
@@ -32,13 +32,13 @@ import kotlin.random.Random
  */
 class NewTaskFragment : Fragment() {
 
-    var checked: Boolean = false
-    var year = 0
-    var month = 0
-    var day = 0
-    var hr = 0
-    var min = 0
-    val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US) }
+    private var checked: Boolean = false
+    private var year = 0
+    private var month = 0
+    private var day = 0
+    private var hr = 0
+    private var min = 0
+    private val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US) }
     private val colors by lazy { resources.getStringArray(R.array.colors) }
     private val taskViewModel: TaskViewModel by lazy {
         ViewModelProvider(this).get(TaskViewModel::class.java)
@@ -127,7 +127,7 @@ class NewTaskFragment : Fragment() {
                     val data = Data.Builder()
                     data.putString("Task Name", binding.task.text.toString())
 
-                    val notifyManager = OneTimeWorkRequest.Builder(notify::class.java)
+                    val notifyManager = OneTimeWorkRequest.Builder(Notify::class.java)
                         .setInputData(data.build())
                         .setInitialDelay(
                             c.timeInMillis - System.currentTimeMillis(),
@@ -155,6 +155,5 @@ class NewTaskFragment : Fragment() {
 
         return binding.root
     }
-
 
 }

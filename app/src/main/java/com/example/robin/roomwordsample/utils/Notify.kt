@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Utils
+package com.example.robin.roomwordsample.utils
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -13,10 +13,10 @@ import androidx.core.app.NotificationCompat
 import androidx.preference.PreferenceManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.example.robin.roomwordsample.Activity.MainActivity
+import com.example.robin.roomwordsample.activity.MainActivity
 import com.example.robin.roomwordsample.R
 
-class notify(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
+class Notify(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
 
     private val b = "420"
     private val task: String? by lazy {
@@ -53,7 +53,6 @@ class notify(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
             .setContentIntent(pi)
             .build()
     }
-
 
     override fun doWork(): Result {
         try {

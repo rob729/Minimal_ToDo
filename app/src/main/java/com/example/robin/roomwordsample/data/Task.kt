@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Data
+package com.example.robin.roomwordsample.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

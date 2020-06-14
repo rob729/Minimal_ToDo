@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Utils
+package com.example.robin.roomwordsample.utils
 
 import android.content.Context
 import android.graphics.Canvas
