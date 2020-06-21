@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Activity
+package com.example.robin.roomwordsample.activity
 
 import android.content.SharedPreferences
 import android.os.Build
@@ -11,10 +11,9 @@ import androidx.preference.PreferenceManager
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
-    val appSharedPrefs: SharedPreferences by lazy {
+    private val appSharedPrefs: SharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(applicationContext)
     }
 
@@ -53,6 +52,5 @@ class MainActivity : AppCompatActivity() {
 //        val navController = this.findNavController(R.id.myNavHostFragment)
 //        return navController.navigateUp() || super.onSupportNavigateUp()
 //    }
-
 
 }

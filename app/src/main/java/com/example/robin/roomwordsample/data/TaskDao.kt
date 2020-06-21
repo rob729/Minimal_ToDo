@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Data
+package com.example.robin.roomwordsample.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

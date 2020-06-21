@@ -1,9 +1,9 @@
-package com.example.robin.roomwordsample.Utils
+package com.example.robin.roomwordsample.utils
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 
-object utils {
+object Utils {
     fun showKeyboard(ctx: Context) {
         val inputMethodManager =
             ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

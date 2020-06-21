@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample.Adapter
+package com.example.robin.roomwordsample.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
-import com.example.robin.roomwordsample.Data.Task
-import com.example.robin.roomwordsample.Data.TaskViewModel
+import com.example.robin.roomwordsample.data.Task
+import com.example.robin.roomwordsample.data.TaskViewModel
 import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.Utils.utils
+import com.example.robin.roomwordsample.utils.Utils
 import com.example.robin.roomwordsample.databinding.RowLayoutBinding
  
 class TaskListAdapter(val context: Context?, val taskViewModel: TaskViewModel) :
@@ -94,16 +94,16 @@ class TaskListAdapter(val context: Context?, val taskViewModel: TaskViewModel) :
                     name.isEnabled = true
                     desc.isEnabled = true
                     name.requestFocus()
-                    utils.showKeyboard(context)
+                    Utils.showKeyboard(context)
                 }
                 save.setOnClickListener {
                     taskViewModel.update(item.id, name.text.toString(), desc.text.toString())
                     mAlertDialog.dismiss()
-                    utils.closeKeyboard(context)
+                    Utils.closeKeyboard(context)
                 }
                 mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
                     mAlertDialog.dismiss()
-                    utils.closeKeyboard(context)
+                    Utils.closeKeyboard(context)
                 }
             }
 
