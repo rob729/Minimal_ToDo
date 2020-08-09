@@ -10,20 +10,20 @@ import androidx.room.Query
 interface TaskDao {
 
     @Insert
-    fun insert(task: Task)
+    suspend fun insert(task: Task)
 
     @Query("UPDATE word_table SET description=:desc, word=:word WHERE id=:id")
-    fun update(id: Int, word: String, desc: String)
+    suspend fun update(id: Int, word: String, desc: String)
 
     @Delete
-    fun deleteTask(task: Task)
+    suspend fun deleteTask(task: Task)
 
     @Query("DELETE FROM word_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("SELECT * from word_table ORDER BY id ASC")
     fun getAllWords(): LiveData<List<Task>>
 
     @Query("UPDATE word_table SET is_complete = :mark WHERE id=:id")
-    fun toggleCompletion(id: Int, mark: Boolean)
+    suspend fun toggleCompletion(id: Int, mark: Boolean)
 }

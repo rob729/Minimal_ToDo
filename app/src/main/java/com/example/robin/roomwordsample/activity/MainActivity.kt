@@ -10,13 +10,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.preference.PreferenceManager
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.databinding.ActivityMainBinding
+import com.example.robin.roomwordsample.utils.AppConstants
+import com.example.robin.roomwordsample.utils.StoreSession
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val appSharedPrefs: SharedPreferences by lazy {
-        PreferenceManager.getDefaultSharedPreferences(applicationContext)
-    }
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
 
-        if (appSharedPrefs.getBoolean("nightMode", false)) {
+        if (StoreSession.read(AppConstants.NIGHT_MODE)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

@@ -1,50 +1,49 @@
 package com.example.robin.roomwordsample.fragments
 
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.robin.roomwordsample.R
+import com.example.robin.roomwordsample.adapter.Action
+import com.example.robin.roomwordsample.adapter.ListActionPerformer
 import com.example.robin.roomwordsample.adapter.TaskListAdapter
 import com.example.robin.roomwordsample.data.Task
 import com.example.robin.roomwordsample.data.TaskViewModel
-import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.utils.SwipeToDeleteCallback
 import com.example.robin.roomwordsample.databinding.FragmentMainBinding
+import com.example.robin.roomwordsample.utils.AppConstants
+import com.example.robin.roomwordsample.utils.StoreSession
+import com.example.robin.roomwordsample.utils.SwipeToDeleteCallback
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainFragment : Fragment() {
+@AndroidEntryPoint
+class MainFragment : Fragment(), ListActionPerformer<Action> {
 
-    private lateinit var taskViewModel: TaskViewModel
+    private val taskViewModel: TaskViewModel by viewModels()
+
     lateinit var binding: FragmentMainBinding
-
-    private val mPrefs: SharedPreferences by lazy {
-        PreferenceManager.getDefaultSharedPreferences(context)
-    }
-    private val editor: SharedPreferences.Editor by lazy {
-        mPrefs.edit()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val nightMode = mPrefs.getBoolean("nightMode", false)
-        if(nightMode){
+        val nightMode = StoreSession.read(AppConstants.NIGHT_MODE)
+        if (nightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -57,13 +56,12 @@ class MainFragment : Fragment() {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (activity as AppCompatActivity).actionBar?.setDisplayShowTitleEnabled(false)
 
-        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
 
-        val taskListAdapter = TaskListAdapter(requireContext(), taskViewModel)
+        val taskListAdapter = TaskListAdapter(this)
         binding.recyclerview.adapter = taskListAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
 
-        taskViewModel.allWords.observe(viewLifecycleOwner, Observer { tasks ->
+        taskViewModel.taskList.observe(viewLifecycleOwner, Observer { tasks ->
             // Update the cached copy of the words in the adapter.
             if (tasks.isEmpty()) {
                 binding.emptyPh.visibility = View.VISIBLE
@@ -92,10 +90,10 @@ class MainFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
 
             R.id.nightMode -> {
-                val nightMode = mPrefs.getBoolean("nightMode", false)
+                val nightMode = StoreSession.read(AppConstants.NIGHT_MODE)
                 val mode =
                     if (nightMode) {
                         AppCompatDelegate.MODE_NIGHT_NO
@@ -104,8 +102,7 @@ class MainFragment : Fragment() {
                     }
 
                 // Change UI Mode
-                editor.putBoolean("nightMode", !nightMode)
-                editor.apply()
+                StoreSession.write(AppConstants.NIGHT_MODE, !nightMode)
                 AppCompatDelegate.setDefaultNightMode(mode)
                 true
 
@@ -125,21 +122,26 @@ class MainFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, i: Int) {
                 val position = viewHolder.adapterPosition
                 val item = taskListAdapter.tasks[position]
-                taskListAdapter.removeitem(position)
+                Log.e("TAG", "Position: $position & name: ${item.word}")
+                taskListAdapter.removeTask(position, requireContext())
                 Snackbar.make(
-                        binding.coodLayout, "Item was removed from the list.",
-                        Snackbar.LENGTH_LONG
-                    )
+                    binding.coodLayout, "Item was removed from the list.",
+                    Snackbar.LENGTH_LONG
+                )
                     .setActionTextColor(Color.rgb(17, 122, 101))
                     .setAction("UNDO") {
-                        taskListAdapter.restoreItem(item, position)
+                        taskListAdapter.restoreTask(item, position)
                         binding.recyclerview.scrollToPosition(position)
                     }.show()
             }
         }
 
-        val itemTouchhelper = ItemTouchHelper(swipeToDeleteCallback)
-        itemTouchhelper.attachToRecyclerView(binding.recyclerview)
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerview)
+    }
+
+    override fun performAction(action: Action) {
+        taskViewModel.handleTaskAction(action)
     }
 }
 

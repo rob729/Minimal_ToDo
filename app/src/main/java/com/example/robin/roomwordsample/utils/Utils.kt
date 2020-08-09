@@ -2,9 +2,11 @@ package com.example.robin.roomwordsample.utils
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 object Utils {
-    fun showKeyboard(ctx: Context) {
+
+    fun showKeyboard (ctx: Context) {
         val inputMethodManager =
             ctx.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
