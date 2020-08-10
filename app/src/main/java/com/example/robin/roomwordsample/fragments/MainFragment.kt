@@ -18,9 +18,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.adapter.Action
-import com.example.robin.roomwordsample.adapter.ListActionPerformer
-import com.example.robin.roomwordsample.adapter.TaskListAdapter
+import com.example.robin.roomwordsample.adapter.*
 import com.example.robin.roomwordsample.data.Task
 import com.example.robin.roomwordsample.data.TaskViewModel
 import com.example.robin.roomwordsample.databinding.FragmentMainBinding
@@ -31,7 +29,8 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment(), ListActionPerformer<Action> {
+class MainFragment : Fragment(), ListActionPerformer<Action>,
+    TaskDetailsBottomSheetFragment.ItemClickListener {
 
     private val taskViewModel: TaskViewModel by viewModels()
 
@@ -141,7 +140,25 @@ class MainFragment : Fragment(), ListActionPerformer<Action> {
     }
 
     override fun performAction(action: Action) {
-        taskViewModel.handleTaskAction(action)
+        if (action is OpenTaskDetailsBottomSheet) {
+            childFragmentManager.let {
+                TaskDetailsBottomSheetFragment.newInstance(Bundle().apply {
+                    putParcelable(
+                        TaskDetailsBottomSheetFragment.TASK_DETAILS,
+                        action.task
+                    )
+                }, this).apply {
+                    show(it, "BottomSheetFragment")
+                }
+            }
+        } else {
+            taskViewModel.handleTaskAction(action)
+        }
+
+    }
+
+    override fun onTaskUpdate(id: Int, name: String, descp: String) {
+        taskViewModel.handleTaskAction(UpdateTask(id, name, descp))
     }
 }
 

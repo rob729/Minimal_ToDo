@@ -2,7 +2,6 @@ package com.example.robin.roomwordsample.data
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.robin.roomwordsample.adapter.*
 import kotlinx.coroutines.CoroutineScope
@@ -11,14 +10,15 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class TaskViewModel @ViewModelInject constructor(private val repository: TaskRepository) : ViewModel() {
+class TaskViewModel @ViewModelInject constructor(private val repository: TaskRepository) :
+    ViewModel() {
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext
         get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
 
-    var taskList : LiveData<List<Task>> = repository.getAllWords()
+    var taskList: LiveData<List<Task>> = repository.getAllWords()
 
     fun insert(task: Task) = scope.launch(Dispatchers.IO) {
         repository.insert(task)
@@ -37,8 +37,8 @@ class TaskViewModel @ViewModelInject constructor(private val repository: TaskRep
         repository.update(id, word, description)
     }
 
-    fun handleTaskAction(action: Action){
-        when(action){
+    fun handleTaskAction(action: Action) {
+        when (action) {
             is RemoveTask -> {
                 delete(action.task)
             }

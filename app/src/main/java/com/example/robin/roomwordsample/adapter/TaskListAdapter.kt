@@ -1,8 +1,10 @@
 package com.example.robin.roomwordsample.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +13,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.R
+import com.example.robin.roomwordsample.activity.MainActivity
 import com.example.robin.roomwordsample.data.Task
 import com.example.robin.roomwordsample.databinding.RowLayoutBinding
+import com.example.robin.roomwordsample.fragments.MainFragment
+import com.example.robin.roomwordsample.fragments.TaskDetailsBottomSheetFragment
 import com.example.robin.roomwordsample.utils.Utils
+import java.io.Serializable
 
 class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
     ListAdapter<Task, TaskListAdapter.ViewHolder>(TaskDiffCallbacks()) {
@@ -59,58 +69,7 @@ class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
             }
 
             binding.relcard.setOnClickListener {
-                val mDialogView =
-                    LayoutInflater.from(binding.root.context)
-                        .inflate(R.layout.task_description_dialog, null)
-                val edit: TextView = mDialogView.findViewById(R.id.edit)
-                val save: Button = mDialogView.findViewById(R.id.save)
-                val desc: EditText = mDialogView.findViewById(R.id.description)
-                val name: EditText = mDialogView.findViewById(R.id.name)
-
-                name.setText(item.word)
-                if (item.description.isNotEmpty()) {
-                    desc.setText(item.description)
-                } else {
-                    desc.visibility = View.GONE
-                }
-                mDialogView.findViewById<TextView>(R.id.time).text = item.time
-                mDialogView.findViewById<TextView>(R.id.status).text =
-                    if (item.isComplete) binding.root.context.getString(R.string.completed) else binding.root.context.getString(
-                        R.string.not_completed
-                    )
-                mDialogView.findViewById<TextView>(R.id.status).setTextColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        if (item.isComplete) R.color.colorAccent else R.color.textColor
-                    )
-                )
-                val mBuilder = AlertDialog.Builder(binding.root.context).setView(mDialogView)
-                val mAlertDialog = mBuilder.show()
-                mAlertDialog.setCancelable(false)
-
-                edit.setOnClickListener {
-                    save.visibility = View.VISIBLE
-                    edit.visibility = View.GONE
-                    name.isEnabled = true
-                    desc.isEnabled = true
-                    name.requestFocus()
-                    Utils.showKeyboard(binding.root.context)
-                }
-                save.setOnClickListener {
-                    listActionPerformer.performAction(
-                        UpdateTask(
-                            item.id,
-                            name.text.toString(),
-                            desc.text.toString()
-                        )
-                    )
-                    mAlertDialog.dismiss()
-                    Utils.closeKeyboard(binding.root.context)
-                }
-                mDialogView.findViewById<Button>(R.id.close).setOnClickListener {
-                    mAlertDialog.dismiss()
-                    Utils.closeKeyboard(binding.root.context)
-                }
+                listActionPerformer.performAction(OpenTaskDetailsBottomSheet(item))
             }
 
         }

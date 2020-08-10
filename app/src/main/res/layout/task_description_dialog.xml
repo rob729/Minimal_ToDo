@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:background="@color/bgColor"
         android:padding="20dp">
@@ -17,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -25,7 +26,10 @@
                     android:enabled="false"
                     android:text="@string/task"
                     android:textColor="@color/textColor"
-                    android:textSize="19sp" />
+                    android:textSize="19sp"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    app:backgroundTint="@color/textColor"/>
 
             <TextView
                     android:id="@+id/edit"
@@ -33,6 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/edit"
+                    android:textColor="@color/textColor"
                     android:textSize="16sp" />
         </LinearLayout>
 
@@ -58,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="15sp"
+                android:textColor="@color/textColor"
                 tools:text="Lorem Ipsum random text here" />
 
         <TextView
@@ -80,12 +86,4 @@
             android:textColor="@color/icons"
             android:visibility="gone" />
 
-    <Button
-            android:id="@+id/close"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorAccent"
-            android:text="@string/close"
-            android:textColor="@color/icons" />
 </LinearLayout>
