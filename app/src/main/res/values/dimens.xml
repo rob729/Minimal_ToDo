@@ -1,6 +1,6 @@
 <resources>
     <!--  Action bar size  -->
-    <dimen name="actionBar">?attr/actionBarSize</dimen>
+    <dimen name="actionBar">?android:attr/actionBarSize</dimen>
 
     <!--  Corner radius  -->
     <dimen name="cornerRadius">8dp</dimen>

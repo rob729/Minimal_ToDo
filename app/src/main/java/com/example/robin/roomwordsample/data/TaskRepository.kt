@@ -1,12 +1,5 @@
 package com.example.robin.roomwordsample.data
 
-import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
-
 class TaskRepository(private val taskDao: TaskDao) {
 
     fun getAllWords() = taskDao.getAllWords()

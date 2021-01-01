@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.data.Task
+import com.example.robin.roomwordsample.databinding.TaskDescriptionDialogBinding
 import com.example.robin.roomwordsample.utils.Utils
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.task_description_dialog.*
 
 class TaskDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var mListener: ItemClickListener
+
+    private var _binding: TaskDescriptionDialogBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,65 +28,69 @@ class TaskDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = TaskDescriptionDialogBinding.bind(view)
         val task = arguments?.getParcelable<Task>(TASK_DETAILS)
-        task?.let { setUpViews(it) }
+        task?.let {
+            setUpViews(it)
+        }
     }
 
     private fun setUpViews(task: Task) {
-        name.setText(task.word)
-        if (task.description.isNotEmpty()) {
-            description.setText(task.description)
-        } else {
-            description.visibility = View.GONE
-        }
-        time.text = task.time
-        status.text =
-            if (task.isComplete)
-                requireContext().getString(R.string.completed)
-            else
-                requireContext().getString(R.string.not_completed)
-        status.setTextColor(
-            ContextCompat.getColor(
-                requireContext(),
-                if (task.isComplete) R.color.colorAccent else R.color.textColor
+        binding.apply {
+            name.setText(task.word)
+            if (task.description.isNotEmpty()) {
+                description.setText(task.description)
+            } else {
+                description.visibility = View.GONE
+            }
+            time.text = task.time
+            status.text =
+                if (task.isComplete)
+                    requireContext().getString(R.string.completed)
+                else
+                    requireContext().getString(R.string.not_completed)
+            status.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    if (task.isComplete) R.color.colorAccent else R.color.textColor
+                )
             )
-        )
-        edit.setOnClickListener {
-            save.visibility = View.VISIBLE
-            edit.visibility = View.GONE
-            name.isEnabled = true
-            description.isEnabled = true
-            name.requestFocus()
-            Utils.showKeyboard(requireContext())
+            edit.setOnClickListener {
+                save.visibility = View.VISIBLE
+                edit.visibility = View.GONE
+                name.isEnabled = true
+                description.isEnabled = true
+                name.requestFocus()
+                Utils.showKeyboard(requireContext())
+            }
+
+            save.setOnClickListener {
+                mListener.onTaskUpdate(task.id, name.text.toString(), description.text.toString())
+                Utils.closeKeyboard(requireContext())
+                dismiss()
+            }
         }
 
-        save.setOnClickListener {
-            mListener.onTaskUpdate(task.id, name.text.toString(), description.text.toString())
-            Utils.closeKeyboard(requireContext())
-            dismiss()
-        }
     }
 
     interface ItemClickListener {
-        fun onTaskUpdate(
-            id: Int,
-            name: String,
-            descp: String
-        )
+        fun onTaskUpdate(id: Int, name: String, description: String)
     }
 
     companion object {
         const val TASK_DETAILS = "task_details"
 
         @JvmStatic
-        fun newInstance(
-            bundle: Bundle,
-            mListener: ItemClickListener
-        ): TaskDetailsBottomSheetFragment {
+        fun newInstance( bundle: Bundle, mListener: ItemClickListener): TaskDetailsBottomSheetFragment {
             val fragment = TaskDetailsBottomSheetFragment()
             fragment.arguments = bundle
             fragment.mListener = mListener
             return fragment
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

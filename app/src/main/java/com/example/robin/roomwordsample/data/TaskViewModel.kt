@@ -51,6 +51,9 @@ class TaskViewModel @ViewModelInject constructor(private val repository: TaskRep
             is UpdateTask -> {
                 update(action.id, action.word, action.description)
             }
+            is OpenTaskDetailsBottomSheet -> {
+                // TODO: 2021/01/01 To be implemented
+            }
         }
     }
 

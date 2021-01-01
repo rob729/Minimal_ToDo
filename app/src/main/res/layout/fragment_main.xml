@@ -8,14 +8,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bgColor"
-            tools:context=".MainFragment">
+            tools:context=".fragments.MainFragment">
 
         <RelativeLayout
                 android:id="@+id/parent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:context=".activity.MainActivity">
+                android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
@@ -26,7 +25,7 @@
 
                 <TextView
                         android:id="@+id/title"
-                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

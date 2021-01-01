@@ -15,7 +15,7 @@
     </fragment>
     <fragment
             android:id="@+id/newTaskFragment"
-            android:name="com.example.robin.roomwordsample.NewTaskFragment"
+            android:name="com.example.robin.roomwordsample.fragments.NewTaskFragment"
             android:label="Create New Task"
             tools:layout="@layout/fragment_add_task" >
         <action

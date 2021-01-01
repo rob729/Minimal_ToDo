@@ -1,4 +1,4 @@
-package com.example.robin.roomwordsample
+package com.example.robin.roomwordsample.fragments
 
 
 import android.app.DatePickerDialog
@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.example.robin.roomwordsample.R
 import com.example.robin.roomwordsample.data.Task
 import com.example.robin.roomwordsample.data.TaskViewModel
 import com.example.robin.roomwordsample.databinding.FragmentAddTaskBinding
@@ -42,14 +43,14 @@ class NewTaskFragment : Fragment() {
     private var hr = 0
     private var min = 0
     private val formatter by lazy { SimpleDateFormat("EEE, d MMM yyyy HH:mm", Locale.US) }
-    val calendar: Calendar by lazy { Calendar.getInstance() }
+    private val calendar: Calendar by lazy { Calendar.getInstance() }
     private val colors by lazy { resources.getStringArray(R.array.colors) }
     private val taskViewModel: TaskViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentAddTaskBinding>(
             inflater,
@@ -83,7 +84,7 @@ class NewTaskFragment : Fragment() {
             val minute = calendar.get(Calendar.MINUTE)
             val mTimePicker = TimePickerDialog(
                 context,
-                TimePickerDialog.OnTimeSetListener { _, i, i1 ->
+                { _, i, i1 ->
                     binding.EnterTime.setText(
                         String.format(resources.getString(R.string.selected_time), i, i1)
                     )
@@ -100,16 +101,16 @@ class NewTaskFragment : Fragment() {
             val mDay = calendar.get(Calendar.DAY_OF_MONTH)
             val mDatePicker = DatePickerDialog(
                 requireContext(),
-                DatePickerDialog.OnDateSetListener { _, selectedyear, selectedmonth, selectedday ->
+                { _, selectedYear, selectedMonth, selectedDay ->
                     binding.EnterDate.setText(
                         String.format(
-                            resources.getString(R.string.selected_date), selectedday,
-                            selectedmonth + 1, selectedyear
+                            resources.getString(R.string.selected_date), selectedDay,
+                            selectedMonth + 1, selectedYear
                         )
                     )
-                    year = selectedyear
-                    month = selectedmonth
-                    day = selectedday
+                    year = selectedYear
+                    month = selectedMonth
+                    day = selectedDay
                 }, mYear, mMonth, mDay
             )
             mDatePicker.show()

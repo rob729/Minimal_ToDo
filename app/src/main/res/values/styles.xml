@@ -9,7 +9,10 @@
         <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
         <item name="colorControlNormal">@color/textColor</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

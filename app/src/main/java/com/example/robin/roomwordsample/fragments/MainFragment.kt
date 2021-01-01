@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -36,10 +35,7 @@ class MainFragment : Fragment(), ListActionPerformer<Action>,
 
     lateinit var binding: FragmentMainBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         val nightMode = StoreSession.read(AppConstants.NIGHT_MODE)
         if (nightMode) {
@@ -48,9 +44,7 @@ class MainFragment : Fragment(), ListActionPerformer<Action>,
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_main, container, false
-        )
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (activity as AppCompatActivity).actionBar?.setDisplayShowTitleEnabled(false)
@@ -60,7 +54,7 @@ class MainFragment : Fragment(), ListActionPerformer<Action>,
         binding.recyclerview.adapter = taskListAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
 
-        taskViewModel.taskList.observe(viewLifecycleOwner, Observer { tasks ->
+        taskViewModel.taskList.observe(viewLifecycleOwner, { tasks ->
             // Update the cached copy of the words in the adapter.
             if (tasks.isEmpty()) {
                 binding.emptyPh.visibility = View.VISIBLE
@@ -157,8 +151,8 @@ class MainFragment : Fragment(), ListActionPerformer<Action>,
 
     }
 
-    override fun onTaskUpdate(id: Int, name: String, descp: String) {
-        taskViewModel.handleTaskAction(UpdateTask(id, name, descp))
+    override fun onTaskUpdate(id: Int, name: String, description: String) {
+        taskViewModel.handleTaskAction(UpdateTask(id, name, description))
     }
 }
 

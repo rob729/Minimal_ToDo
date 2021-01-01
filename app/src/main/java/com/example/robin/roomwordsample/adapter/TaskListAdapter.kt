@@ -1,35 +1,18 @@
 package com.example.robin.roomwordsample.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.WorkManager
 import com.example.robin.roomwordsample.R
-import com.example.robin.roomwordsample.activity.MainActivity
 import com.example.robin.roomwordsample.data.Task
 import com.example.robin.roomwordsample.databinding.RowLayoutBinding
-import com.example.robin.roomwordsample.fragments.MainFragment
-import com.example.robin.roomwordsample.fragments.TaskDetailsBottomSheetFragment
-import com.example.robin.roomwordsample.utils.Utils
-import java.io.Serializable
 
 class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
     ListAdapter<Task, TaskListAdapter.ViewHolder>(TaskDiffCallbacks()) {
@@ -51,12 +34,11 @@ class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
         fun bind(item: Task) {
             binding.task.text = item.word
             if (item.isComplete) {
-                binding.task.setTextColor(binding.root.context.resources.getColor(R.color.colorAccent))
+                binding.task.setTextColor(binding.root.context.resources.getColor(R.color.colorAccent, null))
                 binding.task.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             } else {
-                binding.task.setTextColor(binding.root.context.resources.getColor(R.color.textColor))
-                binding.task.paintFlags =
-                    binding.task.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                binding.task.setTextColor(binding.root.context.resources.getColor(R.color.textColor, null))
+                binding.task.paintFlags = binding.task.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
             }
             binding.time.text = item.time
             binding.TxtImg.setText(item.word.toCharArray()[0] + "")

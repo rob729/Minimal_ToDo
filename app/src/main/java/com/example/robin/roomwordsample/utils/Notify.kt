@@ -7,10 +7,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.core.app.NotificationCompat
-import androidx.preference.PreferenceManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.example.robin.roomwordsample.activity.MainActivity
@@ -34,10 +32,10 @@ class Notify(ctx: Context, params: WorkerParameters) : Worker(ctx, params) {
         )
     }
 
-    private val appSharedPrefs: SharedPreferences by lazy {
-        PreferenceManager
-            .getDefaultSharedPreferences(this.applicationContext)
-    }
+//    private val appSharedPrefs: SharedPreferences by lazy {
+//        PreferenceManager
+//            .getDefaultSharedPreferences(this.applicationContext)
+//    }
 
     private val notificationManager: NotificationManager by lazy {
         applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
