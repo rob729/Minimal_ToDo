@@ -23,6 +23,10 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="choose_theme">Choose Theme</string>
+    <string name="exampleText">Lorem Ipsum random text here</string>
+    <string name="image">Image</string>
+    <string name="pencil_image">Pencil image</string>
+    <string name="reminder_image">Reminder image</string>
 
     <string-array name="colors">
         <item>#FF8F00</item>

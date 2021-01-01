@@ -15,15 +15,15 @@
                 android:id="@+id/parentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="4dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="54dp">
+                android:paddingStart="@dimen/xsPadding"
+                android:paddingTop="@dimen/sPadding"
+                android:paddingEnd="@dimen/xsPadding"
+                android:paddingBottom="@dimen/xxlPadding">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="@dimen/actionBar"
                     android:background="@color/colorPrimary"
                     app:title=" " />
 
@@ -33,10 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/toolbar"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_margin="@dimen/normalMargin"
                     android:hint="@string/task"
                     app:boxStrokeColor="@color/colorAccent"
                     app:hintTextColor="@color/colorAccent">
@@ -46,9 +43,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_task"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="@dimen/drawablePadding"
                         android:inputType="textCapSentences"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/lTextSize"
                         android:transitionName="emailLoginTransition" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,10 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textInput1"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_margin="@dimen/normalMargin"
                     android:hint="@string/description"
                     app:boxStrokeColor="@color/colorAccent"
                     app:hintTextColor="@color/colorAccent">
@@ -71,9 +65,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_description"
-                        android:drawablePadding="10dp"
+                        android:drawablePadding="@dimen/drawablePadding"
                         android:inputType="text"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/lTextSize"
                         android:transitionName="emailLoginTransition" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,29 +76,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textInput2"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/lMargin"
                     android:gravity="center"
-                    android:padding="24dp">
+                    android:padding="@dimen/xlPadding">
 
                 <ImageView
                         android:id="@+id/imgal"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/reminderImageSize"
+                        android:layout_height="@dimen/reminderImageSize"
+                        android:contentDescription="@string/reminder_image"
                         android:src="@drawable/ic_remind" />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="@dimen/lMargin"
                         android:text="@string/remind_me"
                         android:textColor="@color/textColor"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/lTextSize" />
 
-                <Switch
+                <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/HasRemind"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="48dp" />
+                        android:layout_marginStart="@dimen/xlMargin" />
 
             </LinearLayout>
 
@@ -113,17 +108,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/remind_layout"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/normalMargin"
                     android:gravity="center"
-                    android:padding="16dp"
+                    android:padding="@dimen/normalMargin"
                     android:visibility="invisible">
 
                 <EditText
                         android:id="@+id/EnterDate"
-                        android:layout_width="120dp"
+                        android:layout_width="@dimen/editTextWidth"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
+                        android:layout_marginStart="@dimen/lMargin"
                         android:focusable="false"
+                        android:autofillHints="no"
                         android:focusableInTouchMode="false"
                         android:gravity="center"
                         android:hint="@string/date"
@@ -133,17 +129,18 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="@dimen/lMargin"
+                        android:layout_marginTop="@dimen/xsMargin"
                         android:text="@string/at"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/lTextSize" />
 
                 <EditText
                         android:id="@+id/EnterTime"
-                        android:layout_width="120dp"
+                        android:layout_width="@dimen/editTextWidth"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="@dimen/normalMargin"
                         android:focusable="false"
+                        android:autofillHints="no"
                         android:focusableInTouchMode="false"
                         android:gravity="center"
                         android:hint="@string/time"
@@ -162,8 +159,8 @@
                     android:text="@string/create_task"
                     android:textColor="@color/colorPrimary"
                     app:backgroundTint="@color/colorAccent"
-                    app:cornerRadius="12dp"
-                    app:elevation="0dp"
+                    app:cornerRadius="@dimen/cornerRadius"
+                    app:elevation="@dimen/zeroElevation"
                     app:iconTint="@color/colorPrimary"
                     app:icon="@drawable/ic_create" />
 

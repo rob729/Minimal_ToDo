@@ -5,60 +5,61 @@
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="5dp"
-            android:elevation="8dp"
-            app:cardCornerRadius="8dp">
+            android:layout_marginStart="@dimen/xsMargin"
+            android:layout_marginTop="@dimen/sMargin"
+            android:layout_marginEnd="@dimen/xsMargin"
+            android:elevation="@dimen/elevation"
+            app:cardCornerRadius="@dimen/cornerRadius">
 
         <RelativeLayout
                 android:id="@+id/relcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
+                android:padding="@dimen/sPadding">
 
             <com.github.abdularis.civ.AvatarImageView
                     android:id="@+id/TxtImg"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:padding="3dp"
+                    android:layout_width="@dimen/avatarSize"
+                    android:layout_height="@dimen/avatarSize"
+                    android:padding="@dimen/xsPadding"
                     app:avatarBackgroundColor="@color/colorAccent"
                     app:strokeColor="@android:color/white"
-                    app:strokeWidth="1dp"
+                    app:strokeWidth="@dimen/strokeWidth"
                     app:text="A"
-                    app:textSize="22sp" />
+                    app:textSize="@dimen/lTextSize" />
 
             <TextView
                     android:id="@+id/task"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="@dimen/normalMargin"
+                    android:layout_marginTop="@dimen/xsMargin"
+                    android:layout_marginBottom="@dimen/xsMargin"
                     android:layout_toEndOf="@id/TxtImg"
+                    android:layout_toStartOf="@id/completionToggle"
                     android:fontFamily="sans-serif"
                     android:hint="@string/task"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp" />
+                    android:textSize="@dimen/lTextSize" />
 
             <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/task"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/normalMargin"
                     android:layout_toEndOf="@id/TxtImg"
                     android:fontFamily="@font/montserrat"
                     android:hint="@string/time"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/sTextSize" />
 
             <CheckBox
                     android:id="@+id/completionToggle"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="@dimen/checkBoxSize"
+                    android:layout_height="@dimen/checkBoxSize"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="@dimen/normalMargin"
                     android:button="@drawable/custom_checkbox" />
         </RelativeLayout>
 

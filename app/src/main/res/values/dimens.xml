@@ -1,7 +1,44 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="small_padding">6dp</dimen>
-    <dimen name="big_padding">16dp</dimen>
+    <!--  Action bar size  -->
+    <dimen name="actionBar">?attr/actionBarSize</dimen>
 
-    <dimen name="action_bar">?android:attr/actionBarSize</dimen>
+    <!--  Corner radius  -->
+    <dimen name="cornerRadius">8dp</dimen>
+
+    <!--  Elevation  -->
+    <dimen name="elevation">8dp</dimen>
+    <dimen name="zeroElevation">0dp</dimen>
+
+    <!--  Margins  -->
+    <dimen name="xlMargin">48dp</dimen>
+    <dimen name="lMargin">24dp</dimen>
+    <dimen name="normalMargin">16dp</dimen>
+    <dimen name="sMargin">10dp</dimen>
+    <dimen name="xsMargin">5dp</dimen>
+
+    <!--  Padding  -->
+    <dimen name="xxlPadding">54dp</dimen>
+    <dimen name="xlPadding">20dp</dimen>
+    <dimen name="lPadding">16dp</dimen>
+    <dimen name="drawablePadding">10dp</dimen>
+    <dimen name="sPadding">6dp</dimen>
+    <dimen name="xsPadding">3dp</dimen>
+
+    <!--  Sizes  -->
+    <dimen name="editTextWidth">120dp</dimen>
+    <dimen name="noDataImageSize">110dp</dimen>
+    <dimen name="avatarSize">50dp</dimen>
+    <dimen name="reminderImageSize">40dp</dimen>
+    <dimen name="checkBoxSize">35dp</dimen>
+
+    <!--  Stroke width  -->
+    <dimen name="strokeWidth">1dp</dimen>
+
+    <!--  Text size  -->
+    <dimen name="xlTextSize">24sp</dimen>
+    <dimen name="lTextSize">20sp</dimen>
+    <dimen name="normalTextSize">16sp</dimen>
+    <dimen name="sTextSize">12sp</dimen>
+
+
 </resources>

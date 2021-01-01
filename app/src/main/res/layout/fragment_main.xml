@@ -20,7 +20,7 @@
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="@dimen/actionBar"
                     android:background="@color/colorPrimary"
                     app:title=" ">
 
@@ -34,7 +34,7 @@
                         android:gravity="center"
                         android:text="@string/app_name"
                         android:textColor="@color/textColor"
-                        android:textSize="24sp" />
+                        android:textSize="@dimen/xlTextSize" />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -51,19 +51,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                 <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:src="@drawable/empty_view_bg" />
+                        android:layout_width="@dimen/noDataImageSize"
+                        android:layout_height="@dimen/noDataImageSize"
+                        android:src="@drawable/empty_view_bg"
+                        android:contentDescription="@string/image" />
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginTop="@dimen/sMargin"
                         android:text="@string/empty_ph"
-                        android:textSize="20sp" />
+                        android:textSize="@dimen/lTextSize" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -73,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
+                android:contentDescription="@string/pencil_image"
+                android:layout_margin="@dimen/normalMargin"
                 android:transitionName="shared_container"
                 app:backgroundTint="@color/colorAccent"
                 app:srcCompat="@drawable/ic_create" />

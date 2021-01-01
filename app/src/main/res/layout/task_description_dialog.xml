@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:background="@color/bgColor"
-        android:padding="20dp">
+        android:padding="@dimen/xlPadding">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                     android:enabled="false"
                     android:text="@string/task"
                     android:textColor="@color/textColor"
-                    android:textSize="19sp"
+                    android:textSize="@dimen/lTextSize"
                     android:inputType="textPersonName"
                     android:singleLine="true"
                     app:backgroundTint="@color/textColor"/>
@@ -38,7 +38,7 @@
                     android:layout_weight="1"
                     android:text="@string/edit"
                     android:textColor="@color/textColor"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/normalTextSize" />
         </LinearLayout>
 
         <EditText
@@ -47,24 +47,26 @@
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:textColor="@color/textColor"
-                android:textSize="16sp"
-                tools:text="Lorem Ipsum random text here" />
+                android:autofillHints="no"
+                android:textSize="@dimen/normalTextSize"
+                tools:text="@string/exampleText"
+                tools:ignore="LabelFor,TextFields" />
     </LinearLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginTop="10dp">
+            android:layout_margin="@dimen/xsMargin"
+            android:layout_marginTop="@dimen/sMargin">
 
         <TextView
                 android:id="@+id/time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="15sp"
+                android:textSize="@dimen/normalTextSize"
                 android:textColor="@color/textColor"
-                tools:text="Lorem Ipsum random text here" />
+                tools:text="@string/exampleText" />
 
         <TextView
                 android:id="@+id/status"
@@ -72,15 +74,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:textSize="15sp"
-                tools:text="Lorem Ipsum random text here" />
+                android:textSize="@dimen/normalTextSize"
+                tools:text="@string/exampleText" />
     </LinearLayout>
 
     <Button
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/sMargin"
             android:background="@color/colorAccent"
             android:text="@string/button_save"
             android:textColor="@color/icons"

@@ -7,7 +7,7 @@
             android:id="@+id/nightMode"
             android:title="@string/choose_theme"
             app:showAsAction="ifRoom"
-            android:icon="@drawable/ic_lightbulb"/>
+            android:icon="@drawable/ic_light_bulb"/>
 
 <!--    <item-->
 <!--            android:id="@+id/action_settings"-->
