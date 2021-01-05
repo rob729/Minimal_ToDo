@@ -27,6 +27,7 @@
     <string name="image">Image</string>
     <string name="pencil_image">Pencil image</string>
     <string name="reminder_image">Reminder image</string>
+    <string name="alarm_image">Alarm image</string>
 
     <string-array name="colors">
         <item>#FF8F00</item>

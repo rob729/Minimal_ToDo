@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -35,8 +36,8 @@
                     android:layout_marginStart="@dimen/normalMargin"
                     android:layout_marginTop="@dimen/xsMargin"
                     android:layout_marginBottom="@dimen/xsMargin"
-                    android:layout_toEndOf="@id/TxtImg"
                     android:layout_toStartOf="@id/completionToggle"
+                    android:layout_toEndOf="@id/TxtImg"
                     android:fontFamily="sans-serif"
                     android:hint="@string/task"
                     android:textColor="@color/textColor"
@@ -60,7 +61,21 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/normalMargin"
+                    android:layout_marginBottom="@dimen/lMargin"
                     android:button="@drawable/custom_checkbox" />
+
+            <ImageView
+                    android:id="@+id/imgAlarmSet"
+                    android:layout_width="@dimen/alarmIconSize"
+                    android:layout_height="@dimen/alarmIconSize"
+                    android:layout_below="@+id/task"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_toStartOf="@+id/completionToggle"
+                    android:contentDescription="@string/alarm_image"
+                    android:src="@drawable/ic_action_alarm_set"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

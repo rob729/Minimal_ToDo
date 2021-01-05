@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -48,6 +49,13 @@ class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
             binding.completionToggle.setOnCheckedChangeListener { _, isChecked ->
                 toggleCompletion(item.id, isChecked)
                 Log.e("TAG", "" + item.id)
+            }
+
+            //  Setting the visibility of the alarm icon for task with and without alarms
+            if (item.tag.isNotEmpty()) {
+                binding.imgAlarmSet.visibility = View.VISIBLE
+            } else {
+                binding.imgAlarmSet.visibility = View.INVISIBLE
             }
 
             binding.relcard.setOnClickListener {

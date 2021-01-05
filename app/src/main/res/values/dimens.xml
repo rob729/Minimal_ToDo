@@ -39,6 +39,7 @@
     <dimen name="lTextSize">20sp</dimen>
     <dimen name="normalTextSize">16sp</dimen>
     <dimen name="sTextSize">12sp</dimen>
+    <dimen name="alarmIconSize">15dp</dimen>
 
 
 </resources>

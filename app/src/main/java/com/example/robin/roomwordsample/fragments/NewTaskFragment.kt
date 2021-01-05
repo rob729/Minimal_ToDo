@@ -126,7 +126,7 @@ class NewTaskFragment : Fragment() {
                 val task = binding.task.text.toString()
                 val description = binding.description.text.toString()
                 val tm = formatter.format(Date(System.currentTimeMillis()))
-                var tag = " "
+                var tag = ""
                 if (checked) {
                     val c = Calendar.getInstance()
                     c.set(year, month, day, hr, min)
