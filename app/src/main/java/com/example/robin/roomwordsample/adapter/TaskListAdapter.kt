@@ -68,6 +68,13 @@ class TaskListAdapter(val listActionPerformer: ListActionPerformer<Action>) :
                 Log.e("TAG", "" + item.id)
             }
 
+            //  Setting up the alarm icon
+            if (item.tag == " "){
+                binding.imgAlarm.visibility = View.INVISIBLE
+            }else{
+                binding.imgAlarm.visibility = View.VISIBLE
+            }
+
             binding.relcard.setOnClickListener {
                 listActionPerformer.performAction(OpenTaskDetailsBottomSheet(item))
             }
